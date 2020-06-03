@@ -16,7 +16,7 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('groupName')->default('NA');
-            $table->unsignedBigInteger('status')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->unsignedBigInteger('groupType')->default(0);
             $table->foreign('groupType')->references('id')->on('group_types');
             $table->timestamps();

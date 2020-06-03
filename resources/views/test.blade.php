@@ -19,19 +19,19 @@
 
                 <a href="{{route('groups.all')}}" title="">
                   <img class="svgIcon" src="{{asset('storage/svg/group.svg')}}" alt="NOTLOADED">
-                  <span>ADMINISTRAR GRUPOS</span>
+                  <span class="pt-1">>ADMINISTRAR GRUPOS</span>
                 </a>
               </div>
               <div class="col pt-2">
                 <a href="{{route('users.all')}}" title="">
                   <img class="svgIcon" src="{{asset('storage/svg/work.svg')}}" alt="NOTLOADED">
-                  <span>ADMINISTRAR USUARIOS</span>
+                  <span class="pt-1">>ADMINISTRAR USUARIOS</span>
                 </a>
               </div>
               <div class="col pt-2">
                 <a href="{{route('notifications.all')}}" title="">
                   <img class="svgIcon" src="{{asset('storage/svg/message.svg')}}" alt="NOTLOADED">
-                  <span>NOTIFICACIONES PROGRAMADAS</span>
+                  <span class="pt-1">>NOTIFICACIONES PROGRAMADAS</span>
                 </a>
               </div>
             </div>

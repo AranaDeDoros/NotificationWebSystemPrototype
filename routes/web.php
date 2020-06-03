@@ -21,15 +21,21 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'groups'], function () {
     Route::get('/all', 'GroupController@index')->name('groups.all');
+    Route::get('/view', 'GroupController@view')->name('groups.view');
+    Route::post('/new', 'GroupController@new')->name('groups.new');
 });
 
 
 Route::group(['prefix' => 'users'], function(){
-	Route::get('/all', 'UserController@index')->name('users.all');	
+	Route::get('/all', 'UserController@index')->name('users.all');
+	Route::get('/view', 'UserController@index')->name('users.view');
+	Route::post('/new', 'UserController@new')->name('users.new');	
 });
 
 Route::group(['prefix' => 'notifications'], function(){
 	Route::get('/all', 'NotificationController@index')->name('notifications.all');	
+	Route::get('/view', 'NotificationController@index')->name('notifications.view');
+	Route::post('/new', 'NotificationController@new')->name('notifications.new');
 });
 
 
