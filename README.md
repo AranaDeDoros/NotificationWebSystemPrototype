@@ -2,8 +2,8 @@
 
 A barebones Email Notification WebSystem. Allows you to manage users, groups, and programm notifications. The workflow is as follows:
 
--[Login as either admin or regular user] 
--[Make a new notification and add users or groups that will receive it]
+-Login as either admin or regular user.
+-Make a new notification and add users or groups that will receive it.
 
 
 ## CREDITS

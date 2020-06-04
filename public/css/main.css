@@ -1,3 +1,6 @@
+
+
+
 .svgIcon{
 	max-width:70%;
 	max-height:70%;
@@ -13,3 +16,35 @@
 	color: red;
 	
 }
+
+
+nav{
+	margin-bottom: 2%;
+}
+
+.bg-navbar{
+	background-color: #395d73;
+}
+
+.nav-link, .navbar-brand{
+	color: #ddd !important;
+	font-weight: bold;
+}
+
+.nav-link:hover{
+	text-decoration: underline;
+}
+
+#logoName{
+    font-family: 'Rokkitt', serif;
+    font-size: 1.3em;
+}
+
+#logoName::first-letter{
+	background-color: #c51d1d;
+	color:#ddd;
+	font-size: 150%;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+

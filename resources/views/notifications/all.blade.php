@@ -1,6 +1,8 @@
 @extends('layouts.general')
 @section('content')
 
+@section('title', 'Notifications')
+
 <div class="container">
 	<fieldset class="form-group">
 		<legend> CREATE A NEW NOTIFICATION </legend>
@@ -33,9 +35,9 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group form-text ">
-		                 <label for="txtMessage">Extra Info</label>
-		                 <textarea class="form-control" id="txtMessage" rows="3" required></textarea>
-	  				</div>
+			                 <label for="txtMessage">Extra Info</label>
+			                 <textarea class="form-control" id="txtMessage" rows="3" required></textarea>
+	  					</div>
 					</div>
 				</div>
 
@@ -79,7 +81,7 @@
       	{{$notification->notificationType}}
       </td>
       <td>
-      	<a href="{{route('notifications.view', ['id'=>$notification->id])}}" 
+      	<a href="{{route('notifications.view', $notification->id)}}" 
       	id="notification-ID" title="View Notification">
       	DESCRIPCION
       	</a>
@@ -111,4 +113,7 @@
   </tbody>
 </table>
 </div>
+
+@include('layouts/summernote')
+
 @endsection

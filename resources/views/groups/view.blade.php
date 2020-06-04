@@ -1,6 +1,8 @@
 @extends('layouts.general')
 @section('content')
 
+@section('title', 'Groups')
+
 <div class="container">
   <fieldset class="form-group">
     <legend> EDIT GROUP </legend>

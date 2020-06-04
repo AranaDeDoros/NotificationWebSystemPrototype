@@ -5,17 +5,18 @@
 
 <body>
 
-    <div class="cotainer">
+    
 
         @include('layouts/nav')
 
         <main>
 
-            <hr>
+            
             @yield('content')
         </main>
+    
 
-    @include('layouts/footer')
+    {{--@include('layouts/footer')--}}
 </body>
 
 </html>

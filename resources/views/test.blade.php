@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
- 
- @include('layouts/head')
- 
-    <body>
+@extends('layouts/general')
 
+@section('title', 'Home')
 
-
-@include('layouts/nav')
-
-    <main>
-       <hr>
+@section('content')
         <div >
-
           <div class="container text-center mb-2 pb-4">
             <div class="row">
               <div class="col pt-2">
@@ -35,17 +26,10 @@
                 </a>
               </div>
             </div>
-          </div>
+        </div>
 
-
+@endsection
            
           
 
-        </div>
-        
-    </main>
-</div>
 
-@include('layouts/footer')
-    </body>
-</html>

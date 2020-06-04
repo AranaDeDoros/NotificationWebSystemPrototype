@@ -1,6 +1,8 @@
 @extends('layouts.general')
 @section('content')
 
+@section('title', 'Notifications')
+
 <div class="container">
 	<fieldset class="form-group">
 		<legend> EDIT NOTIFICATION </legend>
@@ -36,7 +38,7 @@
 						<div class="form-group form-text ">
 		                 <label for="txtMessage">Extra Info</label>
 		                 <textarea class="form-control" id="txtMessage" rows="3" required></textarea>
-	  				</div>
+	  					</div>
 					</div>
 				</div>
 
@@ -44,7 +46,7 @@
 				   <div class="row">
 					   	<div class="col-8">
 					   		 <label for="inptAttachment form-text ">Attachment</label>
-					    	<input type="file" class="form-control-file" id="inptAttachment">
+					    	<input type="file" class="form-control-file" id="inptAttachment" required>
 						</div>
 					    <div class="col-4">
 					     	<button id="btnUpdateNotif" type="submit" class="btn btn-primary pb-2 pr-3 pl-3 mb-5">Update
@@ -58,5 +60,7 @@
 		</form>
 	</fieldset>
 </div>
+
+@include('layouts/summernote')
 
 @endsection

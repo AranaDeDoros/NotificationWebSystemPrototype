@@ -170,7 +170,7 @@ sup {
 }
 
 a {
-  color: #3490dc;
+  color: #ce3636;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2053,7 +2053,7 @@ pre code {
 
 .table .thead-dark th {
   color: #fff;
-  background-color: #343a40;
+  background-color: #395d73; /*#343a40;*/
   border-color: #454d55;
 }
 
@@ -2711,14 +2711,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: #ce3636;
+  border-color: #ce3636;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: #d25e5e;
+  border-color: #d25e5e;
 }
 
 .btn-primary:focus,

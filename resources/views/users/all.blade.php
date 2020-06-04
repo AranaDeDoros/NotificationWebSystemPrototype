@@ -1,6 +1,8 @@
 @extends('layouts.general')
 @section('content')
 
+@section('title', 'Users')
+
 <div class="container">
 	<fieldset class="form-group">
 		<legend> CREATE A NEW USER </legend>

@@ -15,7 +15,7 @@ class UserController extends Controller
     public function view(Request $request){
     	$id = $request->query('id');
     	$user = User::find($id);
-    	return view('users/all')->with('user', $user);
+    	return view('users/view')->with('user', $user);
 
     }
 
