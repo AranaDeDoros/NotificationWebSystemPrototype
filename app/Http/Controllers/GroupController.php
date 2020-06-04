@@ -16,7 +16,19 @@ class GroupController extends Controller
     	$id = $request->query('id');
     	$group = Group::find($id);
     	//dd($group);
-    	return back()->with('group', $group);
+    	return view('groups/view')->with('group', $group);
 
+    }
+
+    public function new(Request $request){
+        ////////
+    }
+
+    public function update(Request $request){
+        
+    }
+
+    public function delete($id){
+        return Group::find($id)->delete();
     }
 }

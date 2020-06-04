@@ -15,7 +15,19 @@ class NotificationController extends Controller
     public function view(Request $request){
     	$id = $request->query('id');
     	$notification = Notification::find($id);
-    	return back()->with('notification', $notification);
+    	return view('notifications/all')->with('notification', $notification);
 
+    }
+
+    public function new(Request $request){
+    	////////
+    }
+
+    public function update(Request $request){
+        
+    }
+
+    public function delete($id){
+    	return Notification::find($id)->delete();
     }
 }

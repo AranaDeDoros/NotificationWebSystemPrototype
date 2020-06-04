@@ -59,8 +59,8 @@
 
 
 <div class="container text-center">
-	<table class="table" id="tblGroups">
-  <thead class="thead-dark">
+<table class="table" id="tblGroups">
+  	<thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Tipo</th>
@@ -96,8 +96,14 @@
       	@endif
       </td>
       <td>
-  		<button type="button" id="btnDelete"
+
+       <form action="{{route('notifications.delete')}}" method="post" accept-charset="utf-8">
+       	@csrf
+       	@method('DELETE')
+       	<button type="submit" id="btnDeleteNotif"
       	class="btn btn-lg btn-round"> X </button>
+       </form>
+
       </td>
     </tr>
 	@endforeach

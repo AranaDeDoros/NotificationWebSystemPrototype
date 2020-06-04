@@ -15,7 +15,19 @@ class UserController extends Controller
     public function view(Request $request){
     	$id = $request->query('id');
     	$user = User::find($id);
-    	return back()->with('user', $user);
+    	return view('users/all')->with('user', $user);
 
+    }
+
+    public function new(Request $request){
+    	////////
+    }
+
+    public function update(Request $request){
+        
+    }
+
+    public function delete($id){
+    	return User::find($id)->delete();
     }
 }
