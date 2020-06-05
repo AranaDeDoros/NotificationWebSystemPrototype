@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(GroupType::class, function (Faker $faker) {
     return [
-        
+        'description'=> $faker->realText()
     ];
 });

@@ -17,7 +17,7 @@
 						<div class="col">
 							<label for="groupAdd form-text ">Group</label>
 					  		<select id="groupAdd" class="form-control" name="cmbGroups"
-					  		required>
+					  		required multiple>
 					             <option value="">tipo</option>}
 							</select>		
 						</div>

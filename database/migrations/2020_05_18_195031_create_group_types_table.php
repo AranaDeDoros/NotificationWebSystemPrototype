@@ -15,6 +15,7 @@ class CreateGroupTypesTable extends Migration
     {
         Schema::create('group_types', function (Blueprint $table) {
             $table->id();
+            $table->string('description');
             $table->timestamps();
         });
     }
