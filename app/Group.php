@@ -17,16 +17,13 @@ class Group extends Model
     ];
 
 
-    public function groupType(){
-    	return $this->belongsTo(GroupType::class, 'id');
+    public function groupTypes(){
+    	return $this->belongsTo(GroupType::class, 'groupType');
     }
 
-    public function schedule(){
-        return $this->belongsTo(Schedule::class, 'id');
-    }
 
     public function notifications(){
-        return $this->hasMany(Notification::class, 'id');
+        return $this->hasMany(Notification::class, 'groupId');
     }
 
 }

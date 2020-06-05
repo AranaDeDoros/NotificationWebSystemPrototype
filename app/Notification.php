@@ -6,14 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    public function notificationType(){
-    	return $this->belongsTo(NotificationType::class, 'id');
+    public function notificationTypes(){
+    	return $this->belongsTo(NotificationType::class, 'notificationType');
     }
 
     public function groups(){
-    	return $this->belongsToMany(Group::class, 'id');
+    	return $this->belongsTo(Group::class, 'groupId');
     }
 
+    public function schedule(){
+    	return $this->belongsTo(Schedule::class, 'scheduleType');
+    }
     
 
 

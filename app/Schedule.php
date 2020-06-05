@@ -16,7 +16,9 @@ class Schedule extends Model
         'created_at', 'updated_at'
     ];
     
-    public function groups(){
-    	return $this->hasMany(Group::class, 'id');
+    
+    
+    public function notifications(){
+    	return $this->hasMany(Notification::class, 'scheduleType');
     }
 }
