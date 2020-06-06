@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Schedule::class, function (Faker $faker) {
     return [
-        'description' => $faker->realText(),
+        'description' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'lengthInDays' => $faker->randomNumber(1, $strict=true),
         
     ];

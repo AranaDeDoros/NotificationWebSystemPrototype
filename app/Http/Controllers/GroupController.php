@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Group;
+use App\Repositories\GroupRepositoryInterface;
 
 class GroupController extends Controller
 {
+
+    private $groupRepository;
+
+    public function __construct(GroupRepositoryInterface $groupRepository){
+        $this->groupRepository = $groupRepository;
+    }
+
     public function index(){
-    	$groups = Group::all();
+    	$groups = $this->groupRepository->all();
     	return view('groups/all')->with('groups', $groups);
     }
 

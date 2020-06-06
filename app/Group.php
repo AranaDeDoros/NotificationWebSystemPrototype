@@ -16,6 +16,10 @@ class Group extends Model
         'created_at', 'updated_at'
     ];
 
+    protected function format(){
+
+    }
+    
 
     public function groupTypes(){
     	return $this->belongsTo(GroupType::class, 'groupType');

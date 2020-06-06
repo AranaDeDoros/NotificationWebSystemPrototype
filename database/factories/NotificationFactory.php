@@ -10,10 +10,10 @@ use App\NotificationType;
 
 $factory->define(Notification::class, function (Faker $faker) {
     return [
-        'notificationType'=> rand(1, NotificationType::all()->count()),
-        'groupId'=> rand(1, Group::all()->count()),
+        'notificationType'=> NotificationType::all()->random()->id,
+        'groupId'=> Group::all()->random()->id,
         'notificationStatus'=> $faker->boolean(),
-        'scheduleType'=> rand(1, Schedule::all()->count()),
+        'scheduleType'=> Schedule::all()->random()->id,
         'attachments'=>$faker->boolean()
     ];
 });

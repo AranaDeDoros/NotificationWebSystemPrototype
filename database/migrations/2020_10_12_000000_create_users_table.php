@@ -21,8 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('groups');
+            $table->unsignedBigInteger('roleId');
             $table->timestamps();
-            //$table->foreign('groupId')->references('id')->on('groups');
+            
+            $table->foreign('roleId')->references('id')->on('roles');
+            
         });
     }
 

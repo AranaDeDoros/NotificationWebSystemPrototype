@@ -4,12 +4,13 @@
 
 use App\Group;
 use Faker\Generator as Faker;
+use App\GroupType;
 
 $factory->define(Group::class, function (Faker $faker) {
     return [
     	'groupName' => $faker->name(),
-    	'status' => $faker->randomNumber(1, $strict=true),
-    	'groupType' => $faker->randomNumber(1, $strict=true)
+    	'status' => $faker->boolean($chanceOfGettingTrue = 50),
+    	'groupType' => GroupType::all()->random()->id
           
     ];
 });
