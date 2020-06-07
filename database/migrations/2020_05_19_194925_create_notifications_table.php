@@ -29,6 +29,8 @@ class CreateNotificationsTable extends Migration
             $table->foreign('groupId')->references('id')->on('groups');
             $table->foreign('scheduleType')->references('id')->on('schedules');
 
+            $table->softDeletes();
+
             $table->timestamps();
         });
     }

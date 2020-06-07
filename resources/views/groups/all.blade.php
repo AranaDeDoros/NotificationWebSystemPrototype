@@ -62,7 +62,6 @@
       <td>
       	<a href="{{route('groups.view', ['id'=>$group->id])}}" 
       	id="group-ID" title="View Group">
-      	Los Discipulos de Demian
       	{{$group->groupName}}	
       	</a>
       </td>
@@ -74,7 +73,7 @@
       	@endif
       </td>
       <td>
-       <form action="{{route('groups.delete')}}" method="post" accept-charset="utf-8">
+       <form action="{{route('groups.delete', ['id'=>$group->id])}}" method="post" accept-charset="utf-8">
         @csrf
         @method('DELETE')
         <button type="submit" id="btnDeleteGroup"
