@@ -6,18 +6,25 @@ interface UserRepositoryInterface{
 
 	public function all();
 
-	/*public function findById($userId);
+	/*
+	public function getInactiveUsers();
+
+	public function findById($userId);
 
 	public function findByUsername($userName);
 
 	public function findByEmail($userMail);
 
+	public function setStatusToInactive($userId);
+
 	public function getGroups($userId);
 
 	public function getRoles($userId);
 
-	public function update($groupId);
+	public function new($keys);
 
-	public function delete($groupId);*/
+	public function update($keys);
+
+	public function delete($userId);*/
 	
 }

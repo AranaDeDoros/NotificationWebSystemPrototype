@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'groups'
+        'password', 'remember_token', 'groups', 'deleted_at'
     ];
 
     /**
@@ -47,4 +47,6 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'roleId');
     }
 
+
+    //one for groups...
 }

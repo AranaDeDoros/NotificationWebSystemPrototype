@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col">
             <label for="groupName" class="form-text ">Group Name</label>
-              <input type="text" id="groupName" class="form-control" name="txtgroupName"
+              <input type="text" id="groupName" class="form-control" name="txtGroupName"
               required value="{{$group->groupName}}" />
           </div>
           <div class="col">
@@ -72,16 +72,16 @@
 
 </div>
 
-@if(session('success'))
+@if(session('uSuc'))
   <div class="container">
     <div class="alert alert-success" role="alert">
      Updated successfully.
     </div>
   </div>
-@else
+@elseif(session('uErr'))
   <div class="container">
     <div class="alert alert-danger" role="alert">
-     Something went wrong.
+     Groupname already in use.
     </div>
   </div>
 @endif

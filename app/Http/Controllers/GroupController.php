@@ -29,25 +29,35 @@ class GroupController extends Controller
 
     public function new(Request $request){
         $keys = $request->all();
-        $this->groupRepository->new($keys);
-        return back()->with('sucess','group created');
+        $isUnique = $this->groupRepository->new($keys);
+
+        if($isUnique == false){
+            return back()->with('nErr', 'groupname is already being used');
+        }
+
+        return back()->with('nSuc','group created');
 
     }
 
     public function update(Request $request){
-        $keys = $request->all();
-        $isDeleted = $this->groupRepository->update($keys);
 
-        if($isDeleted){
+        $keys = $request->all();
+        $groupResponse = $this->groupRepository->update($keys);
+
+        if($groupResponse == 0){
             return redirect('groups/all');
         }
+        
+        if ($groupResponse == -1) {
+            return back()->with('uErr', 'groupname already in use');
+        }
 
-        return back()->with('success', 'group updated');
+        return back()->with('uSuc', 'group updated');
         
     }
 
     public function delete($id){
         $this->groupRepository->delete($id);
-        return redirect('groups/all')->with('success', 'group deleted');
+        return redirect('groups/all')->with('dSuc', 'group deleted');
     }
 }

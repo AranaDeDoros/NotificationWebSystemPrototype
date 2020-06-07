@@ -11,14 +11,14 @@
           <div class="row">
             <div class="col">
               <label for="groupName form-text ">Group Name</label>
-                <input type="text" id="groupName" class="form-control" name="txtgroupName"
+                <input type="text" id="groupName" class="form-control" name="txtGroupName"
                 required />
             </div>
             <div class="col">
               <label for="groupTypeAdd form-text ">Group Type</label>
                 <select id="groupTypeAdd" class="form-control" name="cmbGroupType"
                 required>
-                       <option value="">tipo</option>}
+                       <option value="1">val1</option>}
               </select>   
             </div>
           </div>
@@ -44,6 +44,36 @@
 </div>
 
 
+@if(session('nSuc'))
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+     Added successfully.
+    </div>
+  </div>
+  
+@elseif(session('nErr'))
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+     Username already in use.
+    </div>
+  </div>
+@endif
+
+
+@if(session('dSuc'))
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+     Deleted successfully.
+    </div>
+  </div>
+@elseif(session('dErr'))
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+     Something went wrong.
+    </div>
+  </div>
+@endif
+
 <div class="container text-center">
 	<table class="table" id="tblGroups">
     <thead class="thead-dark">
@@ -51,7 +81,7 @@
         <th scope="col">ID</th>
         <th scope="col">GroupName</th>
         <th scope="col">Status</th>
-        <th scope="col">Borrar</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
   <tbody>

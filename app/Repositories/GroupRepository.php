@@ -7,14 +7,14 @@ class GroupRepository implements GroupRepositoryInterface{
 
 	public function all(){
 
-		return Group::orderBy('groupName')->where('status',1)->get();
+		return Group::orderBy('groupName')->where('status', 1)->get();
 		//orderby where with get ->map()->format();
 		
 	}
 
 	public function getInactiveGroups(){
 
-		return Group::orderBy('groupName')->where('status',0)->get();
+		return Group::orderBy('groupName')->where('status', 0)->get();
 
 	}
 
@@ -25,8 +25,8 @@ class GroupRepository implements GroupRepositoryInterface{
 	}
 
 	public function findByGroupName($groupName){
-
-		return Group::where('groupName', 'like', '%'.$groupName.'%')->get();
+		return Group::where('groupName', '=', $groupName)->get();
+		//return Group::where('groupName', 'like', '%'.$groupName.'%')->get();
 
 	}
 
@@ -38,26 +38,42 @@ class GroupRepository implements GroupRepositoryInterface{
 
 	public function new($keys){
 
+		if(sizeof($this->findByGroupName($keys['txtGroupName'])) > 0){
+			return false;
+		}
+
+		
 		$newGroup = New Group();
-		$newGroup->groupName = $keys['txtgroupName'];
+		$newGroup->groupName = $keys['txtGroupName'];
 		$newGroup->groupType = $keys['cmbGroupType'];
-		$newGroup->status = $keys['cmbStatus'];
+		$newGroup->status = 1;
 		return $newGroup->save();
+
 	}
 
 	public function update($keys){
 
 		$group = $this->findById($keys['id']);
-		$group->groupName = $keys['txtgroupName'];
+		$newGroupname =$keys['txtGroupName'];
+
+		
+		if(sizeof($this->findByGroupName($newGroupname)) > 0
+		&& $group->groupName != $newGroupname){
+			return -1;
+		}
+
+		$group->groupName = $keys['txtGroupName'];
 		$group->groupType = $keys['cmbGroupType'];
 		$group->status =  $keys['cmbStatus'];
 		$group->save();
 
+
 		if($group->status < 1){
-			return true;
+			return 0;
 		}
 
-		return false;
+		
+		return 1;
 
 	
 	}

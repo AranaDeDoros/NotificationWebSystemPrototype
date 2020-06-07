@@ -67,7 +67,7 @@
 	      	KEY HACIA GROUP(S)
 	      </td>
 	      <td>
-	       <form action="{{route('users.delete')}}" method="post" accept-charset="utf-8">
+	       <form action="{{route('users.delete', ['id'=>$user->id])}}" method="post" accept-charset="utf-8">
 	       	@csrf
        		@method('DELETE')
        		<button type="submit" id="btnDeleteUser"

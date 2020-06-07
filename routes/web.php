@@ -19,19 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware('throttle:10,1')->group(function () {
+Route::middleware('throttle:20,1')->group(function () {
 Route::group(['prefix' => 'groups'], function () {
     Route::get('/all', 'GroupController@index')->name('groups.all');
     Route::get('/view/{id}', 'GroupController@view')->name('groups.view');
     Route::post('/new', 'GroupController@new')->name('groups.new');
     Route::put('/update', 'GroupController@update')->name('groups.update');
     Route::delete('/remove/{id}', 'GroupController@delete')->name('groups.delete');
-
-
 });
 });
 
-Route::middleware('throttle:10,1')->group(function () {
+Route::middleware('throttle:20,1')->group(function () {
 Route::group(['prefix' => 'users'], function(){
 	Route::get('/all', 'UserController@index')->name('users.all');
 	Route::get('/view/{id}', 'UserController@view')->name('users.view');
@@ -41,7 +39,7 @@ Route::group(['prefix' => 'users'], function(){
 });
 });
 
-Route::middleware('throttle:10,1')->group(function () {
+Route::middleware('throttle:20,1')->group(function () {
 Route::group(['prefix' => 'notifications'], function(){
 	Route::get('/all', 'NotificationController@index')->name('notifications.all');	
 	Route::get('/view/{id}', 'NotificationController@view')->name('notifications.view');
@@ -57,5 +55,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::fallback(function () {
 	return 'nobody here but us chickens!';
-	return redirect('/');
 });
