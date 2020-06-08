@@ -35,7 +35,7 @@ Route::group(['prefix' => 'users'], function(){
 	Route::get('/view/{id}', 'UserController@view')->name('users.view');
 	Route::post('/new', 'UserController@new')->name('users.new');
 	Route::put('/update', 'UserController@update')->name('users.update');
-	Route::delete('/remove{id}', 'UserController@delete')->name('users.delete');	
+	Route::delete('/remove/{id}', 'UserController@delete')->name('users.delete');	
 });
 });
 
@@ -45,7 +45,7 @@ Route::group(['prefix' => 'notifications'], function(){
 	Route::get('/view/{id}', 'NotificationController@view')->name('notifications.view');
 	Route::post('/new', 'NotificationController@new')->name('notifications.new');
 	Route::put('/update', 'NotificationController@update')->name('notifications.update');
-	Route::delete('/remove{id}', 'NotificationController@delete')->name('notifications.delete');
+	Route::delete('/remove/{id}', 'NotificationController@delete')->name('notifications.delete');
 });
 });
 

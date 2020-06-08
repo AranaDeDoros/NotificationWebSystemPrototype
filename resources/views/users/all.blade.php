@@ -15,27 +15,70 @@
 					  		required />
 						</div>
 						<div class="col">
-							<label for="groupAdd form-text ">Group</label>
-					  		<select id="groupAdd" class="form-control" name="cmbGroups"
-					  		required multiple>
-					             <option value="">tipo</option>}
-							</select>		
-						</div>
-						<div class="col">
 							<label for="emailAddress form-text ">E-mail</label>
-					  		<input type="email" id="emailAddress" class="form-control" name="email"
+					  		<input type="email" id="emailAddress" class="form-control" name="txtEmail"
 					  		required/>
 						</div>
 						<div class="col">
-							<br>
-							<button id="btnNewUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
-					     	</button>
+							<label for="userAdd form-text ">Group</label>
+					  		<select id="userAdd" class="form-control" name="cmbGroups"
+					  		required multiple>
+					             <option value="1">tipo</option>
+							</select>		
 						</div>
 					</div>
+
+		        <div class="row mt-2">
+		            <div class="col-6">
+		              <label for="userSearch form-text ">Search for groups</label>
+		              <input type="text" id="userSearch"class="form-control" name="txtGroupsSearch">
+		            </div>
+		            <div class="col-4">
+		               <label for="txtMessage">Groups</label>
+		               <textarea class="form-control" name="txtGroups" rows="3" required readonly></textarea>
+		             </div>
+		            <div class="col-2">
+		              <br><br><br>
+		              <button id="btnNewUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
+				      </button>
+		            </div>
+		        </div>					
 
 			</form>
 	</fieldset>
 </div>
+
+
+@if(session('nSuc'))
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+     Added successfully.
+    </div>
+  </div>
+  
+@elseif(session('nErr'))
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+     Username already in use.
+    </div>
+  </div>
+@endif
+
+
+@if(session('dSuc'))
+  <div class="container">
+    <div class="alert alert-success" role="alert">
+     Deleted successfully.
+    </div>
+  </div>
+@elseif(session('dErr'))
+  <div class="container">
+    <div class="alert alert-danger" role="alert">
+     Something went wrong.
+    </div>
+  </div>
+@endif
+
 
 
 <div class="container text-center">
@@ -64,7 +107,7 @@
 	      	{{$user->email}}
 	      </td>
 	      <td>
-	      	KEY HACIA GROUP(S)
+	      	KEY HACIA GRUPOS
 	      </td>
 	      <td>
 	       <form action="{{route('users.delete', ['id'=>$user->id])}}" method="post" accept-charset="utf-8">

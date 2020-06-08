@@ -38,18 +38,19 @@
 
         <div class="row mt-2">
           <div class="col-6">
-            <label for="userSearch" class="form-text ">Search for users</label>
+            <label for="txtUserSearch" class="form-text ">Search for users</label>
             <input type="text" id="userSearch"class="form-control" name="txtUserSearch">
           </div>
           <div class="col-4">
-             <label for="txtMessage">Users</label>
-             <textarea class="form-control" id="txtMessage" rows="3" required readonly></textarea>
+             <label for="txtUsers">Users</label>
+             <textarea class="form-control" name="txtUsers" rows="3" required readonly></textarea>
            </div>
           <div class="col-2">
             <br>
             <button id="btnUpdateGroup" type="submit" class="btn btn-primary btn-block pb-1 pr-3 pl-3 ">Update
             </button>
             <br>
+          </div>
     </form>
   </fieldset>
 

@@ -36,6 +36,20 @@ class GroupRepository implements GroupRepositoryInterface{
 		return $updatedGroup->save();
 	}
 
+
+	public function getNotifications($groupId){
+
+		return Group::find($groupId)->notifications;
+
+	}
+
+	public function getGroupTypes($groupId){
+
+		return Group::find($groupId)->getGroupTypes;
+
+	}
+
+
 	public function new($keys){
 
 		if(sizeof($this->findByGroupName($keys['txtGroupName'])) > 0){

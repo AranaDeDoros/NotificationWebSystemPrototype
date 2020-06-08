@@ -28,6 +28,7 @@ class GroupController extends Controller
     }
 
     public function new(Request $request){
+        
         $keys = $request->all();
         $isUnique = $this->groupRepository->new($keys);
 

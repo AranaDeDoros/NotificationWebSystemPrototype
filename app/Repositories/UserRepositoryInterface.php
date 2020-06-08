@@ -6,14 +6,13 @@ interface UserRepositoryInterface{
 
 	public function all();
 
-	/*
 	public function getInactiveUsers();
 
 	public function findById($userId);
 
 	public function findByUsername($userName);
 
-	public function findByEmail($userMail);
+	public function findByEmail($email);
 
 	public function setStatusToInactive($userId);
 
@@ -25,6 +24,6 @@ interface UserRepositoryInterface{
 
 	public function update($keys);
 
-	public function delete($userId);*/
+	public function delete($userId);
 	
 }

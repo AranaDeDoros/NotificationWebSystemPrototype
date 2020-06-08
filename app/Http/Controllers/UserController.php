@@ -20,22 +20,44 @@ class UserController extends Controller
     	return view('users/all')->with('users', $users);
     }
 
-    public function view(Request $request){
-    	$id = $request->query('id');
-    	$user = User::find($id);
-    	return view('users/view')->with('user', $user);
+    public function view($id){
+    	
+        $user = $this->userRepository->findById($id);
+        return view('users/view')->with('user', $user);
 
     }
 
     public function new(Request $request){
-    	////////
+    	
+        $keys = $request->all();
+        $isUnique = $this->userRepository->new($keys);
+
+        if($isUnique == false){
+            return back()->with('nErr', 'username is already being used');
+        }
+
+        return back()->with('nSuc','user created');
+
     }
 
     public function update(Request $request){
+
+        $keys = $request->all();
+        $userResponse = $this->userRepository->update($keys);
+
+        if($userResponse == 0){
+            return redirect('users/all');
+        }
         
+        if ($userResponse == -1) {
+            return back()->with('uErr', 'username already in use');
+        }
+
+        return back()->with('uSuc', 'user updated');
     }
 
     public function delete($id){
-    	return User::find($id)->delete();
+        $this->userRepository->delete($id);
+        return redirect('users/all')->with('dSuc', 'user deleted');
     }
 }

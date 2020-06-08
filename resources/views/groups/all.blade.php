@@ -30,7 +30,7 @@
             </div>
             <div class="col-4">
                <label for="txtMessage">Users</label>
-               <textarea class="form-control" id="txtMessage" rows="3" required readonly></textarea>
+               <textarea class="form-control" name="txtMessage" rows="3" required readonly></textarea>
              </div>
             <div class="col-2">
               <br><br><br>
@@ -54,7 +54,7 @@
 @elseif(session('nErr'))
   <div class="container">
     <div class="alert alert-danger" role="alert">
-     Username already in use.
+     Groupname already in use.
     </div>
   </div>
 @endif
