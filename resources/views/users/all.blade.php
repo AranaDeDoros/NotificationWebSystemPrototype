@@ -49,35 +49,7 @@
 </div>
 
 
-@if(session('nSuc'))
-  <div class="container">
-    <div class="alert alert-success" role="alert">
-     Added successfully.
-    </div>
-  </div>
-  
-@elseif(session('nErr'))
-  <div class="container">
-    <div class="alert alert-danger" role="alert">
-     Username already in use.
-    </div>
-  </div>
-@endif
-
-
-@if(session('dSuc'))
-  <div class="container">
-    <div class="alert alert-success" role="alert">
-     Deleted successfully.
-    </div>
-  </div>
-@elseif(session('dErr'))
-  <div class="container">
-    <div class="alert alert-danger" role="alert">
-     Something went wrong.
-    </div>
-  </div>
-@endif
+<x-alert entity="User" :operation="session('sOperation') != '' ? session('sOperation') : ''" field="Username"  />
 
 
 

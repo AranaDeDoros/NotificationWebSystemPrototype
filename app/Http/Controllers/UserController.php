@@ -33,10 +33,10 @@ class UserController extends Controller
         $isUnique = $this->userRepository->new($keys);
 
         if($isUnique == false){
-            return back()->with('nErr', 'username is already being used');
+            return back()->with('sOperation', 'nErr');
         }
 
-        return back()->with('nSuc','user created');
+        return back()->with('sOperation','nSuc');
 
     }
 
@@ -50,14 +50,14 @@ class UserController extends Controller
         }
         
         if ($userResponse == -1) {
-            return back()->with('uErr', 'username already in use');
+            return back()->with('sOperation', 'uErr');
         }
 
-        return back()->with('uSuc', 'user updated');
+        return back()->with('sOperation', 'uSuc');
     }
 
     public function delete($id){
         $this->userRepository->delete($id);
-        return redirect('users/all')->with('dSuc', 'user deleted');
+        return redirect('users/all')->with('sOperation', 'dSuc');
     }
 }

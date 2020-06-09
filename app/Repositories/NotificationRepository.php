@@ -36,7 +36,7 @@ class NotificationRepository implements NotificationRepositoryInterface{
 
 	public function setStatusToInactive($notificationId){
 		$updatedNotification = Notification::find($notificationId);
-		$updatedNotification->status = 0;
+		$updatedNotification->notificationStatus = 0;
 		return $updatedNotification->save();
 	}
 
@@ -61,16 +61,17 @@ class NotificationRepository implements NotificationRepositoryInterface{
 
 	public function new($keys){
 
-		if(sizeof($this->findByNotificationKey($keys['txtNotifKey'])) > 0){
+/*		if(sizeof($this->findByNotificationKey($keys['txtNotifKey'])) > 0){
 			return false;
-		}
+		}*/
 
 		
 		$newNotification = New Notification();
-		$newNotification->notificationType = $keys['txtUsername'];
-		$newNotification->groupId = $keys['txtEmail'];
-		$newNotification->scheduleType = '12345789';
+		$newNotification->notificationType = $keys['cmbNotifTypes'];
+		$newNotification->groupId = $keys['cmbGroups'];
+		$newNotification->scheduleType = $keys['cmbSchedules'];
 		$newNotification->attachments = 0;
+		$newNotification->customMessage = $keys['txtMsg'];
 		$newNotification->notificationStatus = 1;
 		return $newNotification->save();
 
@@ -78,23 +79,25 @@ class NotificationRepository implements NotificationRepositoryInterface{
 
 	public function update($keys){
 		$notification = $this->findById($keys['id']);
-		$newNotificationKey =$keys['txtNotifKey'];
+		//$newNotificationKey =$keys['txtNotifKey'];
 
 		
-		if(sizeof($this->findByNotificationKey($newNotificationKey)) > 0
+/*		if(sizeof($this->findByNotificationKey($newNotificationKey)) > 0
 		&& $notification->notificationKey != $newNotificationKey){
 			return -1;
-		}
+		}*/
 
-		$notification->notificationType = $keys['txtUsername'];
-		$notification->groupId = $keys['txtEmail'];
-		$notification->scheduleType = $keys['txtEmail'];
+		
+		$notification->notificationType = $keys['cmbNotifTypes'];
+		$notification->groupId = $keys['cmbGroups'];
+		$notification->scheduleType = $keys['cmbSchedules'];
 		$notification->attachments = 0;
-		$notification->status =  $keys['cmbStatus'];
+		$newNotification->customMessage = $keys['txtMsg'];
+		$notification->notificationStatus =  $keys['cmbStatus'];
 		$notification->save();
 
 
-		if($notification->status < 1){
+		if($notification->notificationStatus < 1){
 			return 0;
 		}
 

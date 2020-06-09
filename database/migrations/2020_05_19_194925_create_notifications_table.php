@@ -18,11 +18,10 @@ class CreateNotificationsTable extends Migration
             
             $table->unsignedBigInteger('notificationType');
             $table->unsignedBigInteger('groupId');
-            //$table->unsignedBigInteger('notificationStatus');
-
             $table->unsignedBigInteger('scheduleType');
-            $table->string('notificationStatus');
+            $table->tinyInteger('notificationStatus')->default(1);
             $table->tinyInteger('attachments')->default(0);
+            $table->text('customMessage');
 
 
             $table->foreign('notificationType')->references('id')->on('notification_types');

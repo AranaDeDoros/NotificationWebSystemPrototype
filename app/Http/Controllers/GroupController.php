@@ -33,10 +33,10 @@ class GroupController extends Controller
         $isUnique = $this->groupRepository->new($keys);
 
         if($isUnique == false){
-            return back()->with('nErr', 'groupname is already being used');
+            return back()->with('sOperation', 'nErr');
         }
-
-        return back()->with('nSuc','group created');
+        
+        return back()->with('sOperation','nSuc');
 
     }
 
@@ -50,15 +50,15 @@ class GroupController extends Controller
         }
         
         if ($groupResponse == -1) {
-            return back()->with('uErr', 'groupname already in use');
+            return back()->with('sOperation', 'uErr');
         }
 
-        return back()->with('uSuc', 'group updated');
+        return back()->with('sOperation', 'uSuc');
         
     }
 
     public function delete($id){
         $this->groupRepository->delete($id);
-        return redirect('groups/all')->with('dSuc', 'group deleted');
+        return redirect('groups/all')->with('sOperation', 'dSuc');
     }
 }

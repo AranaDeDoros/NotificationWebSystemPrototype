@@ -16,26 +16,50 @@ class NotificationController extends Controller
     }
 
     public function index(){
-    	$notifications = Notification::all();
-    	return view('notifications/all')->with('notifications', $notifications);
+    	$notifications = $this->notificationRepository->all();
+        return view('notifications/all')->with('notifications', $notifications);
     }
 
-    public function view(Request $request){
-        $id = $request->query('id');
-    	$notification = Notification::find($id);
-    	return view('notifications/view')->with('notification', $notification);
+    public function view($id){
+
+        $notification = $this->notificationRepository->findById($id);
+        return view('notifications/view')->with('notification', $notification);
 
     }
 
     public function new(Request $request){
-    	////////
+
+        $keys = $request->all();
+        $isUnique = $this->notificationRepository->new($keys);
+
+/*        if($isUnique == false){
+            return back()->with('sOperation', 'nErr');
+        }*/
+
+        return back()->with('sOperation', 'nSuc');
+
     }
 
     public function update(Request $request){
+
+        $keys = $request->all();
+        $notificationRespo = $this->notificationRepository->update($keys);
+
+        if($notificationRespo == 0){
+            return redirect('notifications/all');
+        }
         
+        if ($notificationRespo == -1) {
+            return back()->with('sOperation', 'uErr');
+        }
+
+        return back()->with('sOperation', 'uSuc');
     }
 
     public function delete($id){
-    	return Notification::find($id)->delete();
+
+        $this->notificationRepository->delete($id);
+        return redirect('notifications/all')->with('sOperation', 'dSuc');
+
     }
 }

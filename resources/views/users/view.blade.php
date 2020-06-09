@@ -77,18 +77,6 @@
 </div>
 
 
-@if(session('uSuc'))
-  <div class="container">
-    <div class="alert alert-success" role="alert">
-     Updated successfully.
-    </div>
-  </div>
-@elseif(session('uErr'))
-  <div class="container">
-    <div class="alert alert-danger" role="alert">
-     Username already in use.
-    </div>
-  </div>
-@endif
+<x-alert entity="User" :operation="session('sOperation') != '' ? session('sOperation') : ''" field="Username"  />
 
 @endsection

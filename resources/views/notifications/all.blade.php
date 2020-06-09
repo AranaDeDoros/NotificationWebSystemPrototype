@@ -6,28 +6,28 @@
 <div class="container">
 	<fieldset class="form-group">
 		<legend> CREATE A NEW NOTIFICATION </legend>
-		<form method="POST" action="{{route('notifications.new')}}">
+		<form method="POST" action="{{route('notifications.new')}}" enctype="multipart/form-data">
 				@csrf
 				<div class="row">
 					<div class="col">
 						<label for="notifTypes form-text ">Type</label>
 				  		<select id="notifTypes" class="form-control" name="cmbNotifTypes"
 				  		required>
-				             <option value="">tipo</option>}
+				             <option value="1">tipo</option>}
 						</select>			
 					</div>
 					<div class="col">
 						<label for="groupAdd form-text ">Group</label>
 				  		<select id="groupAdd" class="form-control" name="cmbGroups"
 				  		required>
-				             <option value="">tipo</option>}
+				             <option value="2">tipo</option>}
 						</select>		
 					</div>
 					<div class="col">
 						<label for="scheduleTypes form-text ">Schedule</label>
 				  		<select id="scheduleTypes" class="form-control" name="cmbSchedules"
 				  		required>
-				             <option value="">tipo</option>}
+				             <option value="3">tipo</option>}
 						</select>			
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 					<div class="col-12">
 						<div class="form-group form-text ">
 			                 <label for="txtMessage">Extra Info</label>
-			                 <textarea class="form-control" id="txtMessage" rows="3" required></textarea>
+			                 <textarea class="form-control" id="txtMessage"  name="txtMsg" rows="3" required></textarea>
 	  					</div>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 				   <div class="row">
 					   	<div class="col-8">
 					   		 <label for="inptAttachment form-text ">Attachment</label>
-					    	<input type="file" class="form-control-file" id="inptAttachment">
+					    	<input type="file" class="form-control-file" name="inptAttachment">
 						</div>
 					    <div class="col-4">
 					     	<button id="btnNewNotif" type="submit" class="btn btn-primary pb-2 pr-3 pl-3 mb-5">Create</button>
@@ -58,6 +58,8 @@
 		</form>
 	</fieldset>
 </div>
+
+<x-alert entity="Notification" :operation="session('sOperation') != '' ? session('sOperation') : ''" field=""  />
 
 
 <div class="container text-center">
@@ -91,7 +93,7 @@
       </td>
       
       <td class="statusLabel">
-      	@if($notification->status > 0)
+      	@if($notification->notificationStatus > 0)
       		<span class="text-muted">ACTIVE</span>
       	@else
       		<span class="text-muted">INACTIVE</span>
@@ -99,7 +101,7 @@
       </td>
       <td>
 
-       <form action="{{route('notifications.delete')}}" method="post" accept-charset="utf-8">
+       <form action="{{route('notifications.delete', ['id' => $notification->id])}}" method="post" accept-charset="utf-8">
        	@csrf
        	@method('DELETE')
        	<button type="submit" id="btnDeleteNotif"
@@ -115,5 +117,6 @@
 </div>
 
 @include('layouts/summernote')
+
 
 @endsection

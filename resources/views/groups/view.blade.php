@@ -73,18 +73,6 @@
 
 </div>
 
-@if(session('uSuc'))
-  <div class="container">
-    <div class="alert alert-success" role="alert">
-     Updated successfully.
-    </div>
-  </div>
-@elseif(session('uErr'))
-  <div class="container">
-    <div class="alert alert-danger" role="alert">
-     Groupname already in use.
-    </div>
-  </div>
-@endif
+<x-alert entity="Group" :operation="session('sOperation') != '' ? session('sOperation') : ''" field="Groupname"  />
 
 @endsection

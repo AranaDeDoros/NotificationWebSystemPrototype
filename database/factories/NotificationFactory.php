@@ -14,6 +14,7 @@ $factory->define(Notification::class, function (Faker $faker) {
         'groupId'=> Group::all()->random()->id,
         'notificationStatus'=> $faker->boolean(),
         'scheduleType'=> Schedule::all()->random()->id,
-        'attachments'=>$faker->boolean()
+        'attachments'=>$faker->boolean(),
+        'customMessage' => $faker->realText()
     ];
 });

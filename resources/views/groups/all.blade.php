@@ -43,36 +43,8 @@
   </fieldset>
 </div>
 
+<x-alert entity="Group" :operation="session('sOperation') != '' ? session('sOperation') : ''" field="Groupname"  />
 
-@if(session('nSuc'))
-  <div class="container">
-    <div class="alert alert-success" role="alert">
-     Added successfully.
-    </div>
-  </div>
-  
-@elseif(session('nErr'))
-  <div class="container">
-    <div class="alert alert-danger" role="alert">
-     Groupname already in use.
-    </div>
-  </div>
-@endif
-
-
-@if(session('dSuc'))
-  <div class="container">
-    <div class="alert alert-success" role="alert">
-     Deleted successfully.
-    </div>
-  </div>
-@elseif(session('dErr'))
-  <div class="container">
-    <div class="alert alert-danger" role="alert">
-     Something went wrong.
-    </div>
-  </div>
-@endif
 
 <div class="container text-center">
 	<table class="table" id="tblGroups">
