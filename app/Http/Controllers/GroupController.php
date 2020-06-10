@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Group;
 use App\Repositories\GroupRepositoryInterface;
+use App\DatabaseOperations;
 
 class GroupController extends Controller
 {
 
     private $groupRepository;
+    private $databaseOperations;
 
     public function __construct(GroupRepositoryInterface $groupRepository){
         $this->groupRepository = $groupRepository;
@@ -60,5 +62,15 @@ class GroupController extends Controller
     public function delete($id){
         $this->groupRepository->delete($id);
         return redirect('groups/all')->with('sOperation', 'dSuc');
+    }
+
+    public function searchGroups(Request $request){
+        
+        $queryText = $request->query('q');
+        $databaseOperations = new DatabaseOperations();
+        $results = Group::where('groupName', 
+            "like",  "%".$databaseOperations->escape_like($queryText)."%")->get(); 
+        return response()->json($results);
+
     }
 }

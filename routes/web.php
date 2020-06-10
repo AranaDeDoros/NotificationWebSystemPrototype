@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -46,9 +46,15 @@ Route::group(['prefix' => 'notifications'], function(){
 	Route::post('/new', 'NotificationController@new')->name('notifications.new');
 	Route::put('/update', 'NotificationController@update')->name('notifications.update');
 	Route::delete('/remove/{id}', 'NotificationController@delete')->name('notifications.delete');
-});
+	});
 });
 
+Route::middleware('throttle:20,1')->group(function(){
+	Route::group(['prefix' => 'search'], function(){
+		Route::get('/users', 'UserController@searchUsers')->name('search.users');
+		Route::get('/groups', 'GroupController@searchGroups')->name('search.groups');
+	});
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');

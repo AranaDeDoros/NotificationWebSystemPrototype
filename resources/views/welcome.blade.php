@@ -1,100 +1,80 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.general')
 
-        <title>Laravel</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+<div class="autocomplete-suggestion">
+    
+</div>
 
-            .full-height {
-                height: 100vh;
-            }
+<form class="form" onsubmit="return false"  method="get" >
+    <input id="query" type="text" class="form-control" name="q" placeholder="username">
+    
+</form>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<textarea id="txt" class="form-control" name="ok" value=""></textarea>
 
-            .position-ref {
-                position: relative;
-            }
+<script>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+let xhr;
+let queryInput = document.getElementById('query');
+let textArea = document.getElementById('txt');
+let entity = window.location.href.includes('user') ? 'users' : 'groups';
 
-            .content {
-                text-align: center;
-            }
+new autoComplete({
+    selector: 'input[name="q"]',
+    minChars: 3,
+    delay: 150,
+    cache: true,
+    menuClass: '',
+    
+    source: function(term, response){
+        try { xhr.abort(); } catch(e){}
+        xhr = $.getJSON("search/"+entity, { q: term }, function(data){
+            let rawResponse = data;
+            let suggestions = prepareSuggestions(rawResponse, 'groups');
+            /*let suggestions = [];
+            rawResponse.forEach((e)=>{
+                suggestions.push(e.name+"|"+e.id);
+            });
+            console.log(data);
+            console.log(suggestions);*/
+            response(suggestions);
+            
+        });
+    },
+renderItem: function (item, search){
+    
+        let results = item.split("|");
+        let username = results[0];
+        let uId = results[1];
+        //console.log(results);
+        let e = '<div class="autocomplete-suggestion"'+'userName="'+username+'" data-uId="uId'+uId+'">'+username+'</div>';
+        console.log(e);
+        return e;
+    },
 
-            .title {
-                font-size: 84px;
-            }
+    onSelect: function(e, term, item){
+        
+        queryInput.value = item.getAttribute('username');
+        textArea.value += item.getAttribute('username')+"\n";
+    }
+});
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+ const prepareSuggestions = (arr, entity)=>{
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+    let suggestions = [];
+    arr.forEach((e)=>{
+        if(entity === 'users'){
+            suggestions.push(e.name+"|"+e.id);
+        }
+        else{
+            suggestions.push(e.groupName+"|"+e.id);
+        }        
+    });
+    return suggestions;
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+ };
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+</script>
+@endsection

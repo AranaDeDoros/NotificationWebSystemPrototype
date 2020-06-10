@@ -22,10 +22,10 @@
       <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
       <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
 
+      
+      <script src="{{asset('js/auto-complete.min.js')}}"></script>
+      <link rel="stylesheet" href="{{asset('css/auto-complete.css')}}">
 
-       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
-       <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js" type="text/javascript"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&display=swap" rel="stylesheet"> 
 
 
         <!-- Styles -->
@@ -48,4 +48,4 @@
           }
 
         </style>
-  </head>
+</head>

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Repositories\UserRepositoryInterface;
+use App\DatabaseOperations;
 
 class UserController extends Controller
 {
 
     private $userRepository;
+    private $databaseOperations;
 
     public function __construct(UserRepositoryInterface $userRepository){
         $this->userRepository = $userRepository;
@@ -59,5 +61,15 @@ class UserController extends Controller
     public function delete($id){
         $this->userRepository->delete($id);
         return redirect('users/all')->with('sOperation', 'dSuc');
+    }
+
+    public function searchUsers(Request $request){
+
+        $queryText = $request->query('q');
+        $databaseOperations = new DatabaseOperations();
+        $results = User::where('name', 
+            "like",  "%".$databaseOperations->escape_like($queryText)."%")->get(); 
+        return response()->json($results);
+    
     }
 }
