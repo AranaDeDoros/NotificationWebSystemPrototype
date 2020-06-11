@@ -5,7 +5,7 @@
 
         <title>Avisen.me - @yield('title')</title>
 
-        <!-- Fonts -->
+        <!-- main -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -17,14 +17,14 @@
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
       <link rel="manifest" href="/site.webmanifest">
 
-      <!-- Scripts -->
-
+      <!-- plugins -->
+      <link href="{{ asset('css/tagify.css') }}" rel="stylesheet">
       <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
       <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
-
-      
       <script src="{{asset('js/auto-complete.min.js')}}"></script>
       <link rel="stylesheet" href="{{asset('css/auto-complete.css')}}">
+      <script src="{{asset('js/tagify.js')}}"></script>
+      
 
 
 

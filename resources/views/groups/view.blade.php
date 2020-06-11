@@ -47,6 +47,7 @@
            </div>
           <div class="col-2">
             <br>
+            <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">Deselect all users</button>
             <button id="btnUpdateGroup" type="submit" class="btn btn-primary btn-block pb-1 pr-3 pl-3 ">Update
             </button>
             <br>

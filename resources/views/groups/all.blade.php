@@ -33,7 +33,8 @@
                <textarea class="form-control" name="txtMessage" rows="3" required readonly></textarea>
              </div>
             <div class="col-2">
-              <br><br><br>
+              <br>
+              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">Deselect all users</button>
               <button id="btnNewGroup" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
                 </button>
             </div>

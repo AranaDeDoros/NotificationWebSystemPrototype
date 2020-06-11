@@ -9,22 +9,51 @@
 
 <form class="form" onsubmit="return false"  method="get" >
     <input id="query" type="text" class="form-control" name="q" placeholder="username">
-    
 </form>
 
-<textarea id="txt" class="form-control" name="ok" value=""></textarea>
-
+    <div class="container">
+        <div class="row">
+                <button class="btn btn-primary btn-sm btn-round " id="btnTagsDes" type="primary">X</button>
+                <input name="tags" placeholder="write some tags" class="form-control" value="">
+        </div>
+    </div>
+    
 <script>
 
+
+
+
+// user tags
+const input = document.querySelector('input[name=tags]'),
+tagify = new Tagify( input, {
+    duplicates: false,
+    editTags: false,
+    originalInputValueFormat: valuesArr => valuesArr
+                              .map(item => item.uId).join(',')   
+} );
+
+/*onchange event to assign its current value
+ to the input that will be sent to the server*/
+input.addEventListener('change', (e)=>{
+
+});
+
+//button to remove all entered users
+const deselectAllBtn = document.getElementById('btnTagsDes')
+                      .addEventListener('click', ()=>{
+                      tagify.removeAllTags();});
+
+
+//the autocomplete
 let xhr;
 let queryInput = document.getElementById('query');
-let textArea = document.getElementById('txt');
+let usersList = document.getElementById('tags');
 let entity = window.location.href.includes('user') ? 'users' : 'groups';
 
 new autoComplete({
+    
     selector: 'input[name="q"]',
-    minChars: 3,
-    delay: 150,
+    minChars: 3,    delay: 150,
     cache: true,
     menuClass: '',
     
@@ -43,29 +72,41 @@ new autoComplete({
             
         });
     },
-renderItem: function (item, search){
+
+    renderItem: function (item, search){
     
-        let results = item.split("|");
-        let username = results[0];
-        let uId = results[1];
+        let attributeValues = item.split("|");
+        let entityValue = attributeValues[0];
+        let uIdValue = attributeValues[1];
         //console.log(results);
-        let e = '<div class="autocomplete-suggestion"'+'userName="'+username+'" data-uId="uId'+uId+'">'+username+'</div>';
-        console.log(e);
-        return e;
+        let element = returnEntityDiv(entity, entityValue, uIdValue);
+        //'<div class="autocomplete-suggestion"'+'userName="'+username+'" data-uId="uId'+uId+'">'+username+'</div>';
+        //console.log(e);
+        return element;
     },
 
     onSelect: function(e, term, item){
-        
+
         queryInput.value = item.getAttribute('username');
-        textArea.value += item.getAttribute('username')+"\n";
+        currentTag =  {value: item.getAttribute('username'),
+                       username: item.getAttribute('username'), 
+                       uId: item.getAttribute('data-uId')};
+
+        tagify.addTags([
+        
+            currentTag
+            
+        ]);
+        
+        queryInput.value = '';
     }
 });
 
- const prepareSuggestions = (arr, entity)=>{
+ const prepareSuggestions = (arr, entityName)=>{
 
     let suggestions = [];
     arr.forEach((e)=>{
-        if(entity === 'users'){
+        if(entityName === 'users'){
             suggestions.push(e.name+"|"+e.id);
         }
         else{
@@ -76,5 +117,29 @@ renderItem: function (item, search){
 
  };
 
+ const returnEntityDiv = (entityName, entityValue, uIdValue) => {
+
+    let entityAttribute = entityValue;
+    let uIdAttribute = uIdValue;
+    let elementDiv = '';
+
+    if(entityName === 'users'){
+
+        elementDiv = `<div class="autocomplete-suggestion" userName="${entityAttribute}" 
+                      data-uId="uId${uIdAttribute}'">${entityAttribute}</div>`;
+
+    }
+    else{
+
+        elementDiv = `<div class="autocomplete-suggestion" userName="${entityAttribute}" 
+                      data-uId="uId${uIdAttribute}'">${entityAttribute}</div>`;
+
+    }
+
+    return elementDiv;
+
+ }
+
 </script>
+
 @endsection
