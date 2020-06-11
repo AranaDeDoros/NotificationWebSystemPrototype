@@ -2,6 +2,9 @@
 @section('content')
 
 @section('title', 'Groups')
+
+<x-return-button routeName="groups.all"/>
+
 <div class="container">
   <fieldset class="form-group">
     <legend> EDIT GROUP </legend>
@@ -38,12 +41,13 @@
 
         <div class="row mt-2">
           <div class="col-6">
-            <label for="txtUserSearch" class="form-text ">Search for users</label>
-            <input type="text" id="userSearch"class="form-control" name="txtUserSearch">
+            <label for="q" class="form-text ">Search for users</label>
+            <input id="query" type="text" class="form-control" name="q" placeholder="username">
           </div>
           <div class="col-4">
-             <label for="txtUsers">Users</label>
-             <textarea class="form-control" name="txtUsers" rows="3" required readonly></textarea>
+             <div class="autocomplete-suggestion"></div>
+             <label for="tags">Users</label>
+             <input name="tags" placeholder="add somebody" class="form-control" value="">
            </div>
           <div class="col-2">
             <br>
@@ -75,5 +79,7 @@
 </div>
 
 <x-alert entity="Group" :operation="session('sOperation') != '' ? session('sOperation') : ''" field="Groupname"  />
+
+<script src="{{asset('js/entitySearch.js')}}"></script>
 
 @endsection

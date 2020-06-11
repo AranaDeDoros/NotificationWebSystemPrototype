@@ -1,25 +1,3 @@
-@extends('layouts.general')
-
-@section('content')
-
-
-
-<div class="autocomplete-suggestion"></div>
-
-<form class="form" onsubmit="return false"  method="get" >
-    <input id="query" type="text" class="form-control" name="q" placeholder="username">
-</form>
-
-    <div class="container">
-        <div class="row">
-                <button class="btn btn-primary btn-sm btn-round " id="btnTagsDes" type="primary">X</button>
-                <input name="tags" placeholder="add somebody" class="form-control" value="">
-        </div>
-    </div>
-    
-<script>
-
-
 
 
 // user tags
@@ -47,7 +25,9 @@ const deselectAllBtn = document.getElementById('btnTagsDes')
 let xhr;
 let queryInput = document.getElementById('query');
 let usersList = document.getElementById('tags');
-let entity = window.location.href.includes('user') ? 'users' : 'groups';
+let entity = window.location.href.includes('group') ? 'users' : 'groups';
+let requestUrl = basePath+'/search/'+entity;
+console.log(requestUrl);
 
 new autoComplete({
     
@@ -59,9 +39,9 @@ new autoComplete({
     
     source: function(term, response){
         try { xhr.abort(); } catch(e){}
-        xhr = $.getJSON("search/"+entity, { q: term }, function(data){
+        xhr = $.getJSON(requestUrl, { q: term }, function(data){
             let rawResponse = data;
-            let suggestions = prepareSuggestions(rawResponse, 'groups');
+            let suggestions = prepareSuggestions(rawResponse, entity);
             /*let suggestions = [];
             rawResponse.forEach((e)=>{
                 suggestions.push(e.name+"|"+e.id);
@@ -78,6 +58,7 @@ new autoComplete({
         let attributeValues = item.split("|");
         let entityValue = attributeValues[0];
         let uIdValue = attributeValues[1];
+        console.log(item);
         //console.log(results);
         let element = returnEntityDiv(entity, entityValue, uIdValue);
         //'<div class="autocomplete-suggestion"'+'userName="'+username+'" data-uId="uId'+uId+'">'+username+'</div>';
@@ -138,7 +119,3 @@ new autoComplete({
     return elementDiv;
 
  }
-
-</script>
-
-@endsection
