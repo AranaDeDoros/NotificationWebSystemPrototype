@@ -3,6 +3,8 @@
 
 @section('title', 'Notifications')
 
+<x-return-button routeName="notifications.all"/>
+
 <div class="container">
 	<fieldset class="form-group">
 		<legend> EDIT NOTIFICATION </legend>
@@ -47,6 +49,24 @@
 			            </select> 
           			</div>
 				</div>
+				<div class="row">
+		            <div class="col-6">
+		              <label for="q form-text ">Search for groups</label>
+		              <input id="query" type="text" class="form-control" name="q" placeholder="groupname">
+		            </div>
+		            <div class="col-4">
+		               <div class="autocomplete-suggestion"></div>
+		               <label for="tags">Groups</label>
+		               <input name="tags" placeholder="add somebody" class="form-control" value="">
+		            </div>
+		            <div class="col-2">
+		              <br>
+		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
+		              Deselect all users</button>
+		              <button id="btnNewGroup" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
+		                </button>
+		            </div>
+	            </div>
 				AGREGAR CAMPO PARA INFO ADICIONAL?
 				<div class="row">
 					<div class="col-12">
@@ -92,5 +112,7 @@
 <x-alert entity="Notification" :operation="session('sOperation') != '' ? session('sOperation') : ''" field=""  />
 
 @include('layouts/summernote')
+
+<script src="{{asset('js/entitySearch.js')}}"></script>
 
 @endsection

@@ -3,6 +3,8 @@
 
 @section('title', 'Users')
 
+<x-return-button routeName="index"/>
+
 <div class="container">
 	<fieldset class="form-group">
 		<legend> CREATE A NEW USER </legend>
@@ -27,19 +29,21 @@
 							</select>		
 						</div>
 					</div>
-
+ 
 		        <div class="row mt-2">
 		            <div class="col-6">
-		              <label for="userSearch form-text ">Search for groups</label>
-		              <input type="text" id="userSearch"class="form-control" name="txtGroupsSearch">
+		              <label for="q form-text ">Search for groups</label>
+		              <input id="query" type="text" class="form-control" name="q" placeholder="groupname">
 		            </div>
 		            <div class="col-4">
-		               <label for="txtMessage">Groups</label>
-		               <textarea class="form-control" name="txtGroups" rows="3" required readonly></textarea>
+		            	<div class="autocomplete-suggestion"></div>
+		               <label for="tags">Groups</label>
+		               <input name="tags" placeholder="add somebody" class="form-control" value="">
 		             </div>
 		            <div class="col-2 text-center">
 		              <br>
-		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">Deselect all groups</button>
+		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
+		              Deselect all groups</button>
 		              <button id="btnNewUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
 				      </button>
 		            </div>
@@ -96,4 +100,7 @@
 	  </tbody>	
 	</table>
 </div>
+
+<script src="{{asset('js/entitySearch.js')}}"></script>
+
 @endsection

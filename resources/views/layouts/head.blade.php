@@ -7,24 +7,30 @@
 
         <!-- main -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-       <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-       <script src="{{ asset('js/app.js')}}" type="text/javascript" charset="utf-8"></script>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/app.js')}}" type="text/javascript" charset="utf-8"></script>
 
        <!-- favicons -->
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-      <link rel="manifest" href="/site.webmanifest">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
 
       <!-- plugins -->
-      <link href="{{ asset('css/tagify.css') }}" rel="stylesheet">
-      <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
-      <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
-      <script src="{{asset('js/auto-complete.min.js')}}"></script>
-      <link rel="stylesheet" href="{{asset('css/auto-complete.css')}}">
-      <script src="{{asset('js/tagify.js')}}"></script>
-      
+
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+        <link href="{{ asset('css/tagify.css') }}" rel="stylesheet">
+        <script src="{{asset('js/auto-complete.min.js')}}"></script>
+        <link rel="stylesheet" href="{{asset('css/auto-complete.css')}}">
+        <script src="{{asset('js/tagify.js')}}"></script>      
+        <script>let basePath = '{{url('/')}}' ;</script>
+
+      {{--
+        @stack('summernoteAssets')
+        @stack('autocompleteAssets')
+       --}}
 
 
 
