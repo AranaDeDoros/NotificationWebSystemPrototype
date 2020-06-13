@@ -7,7 +7,11 @@ use Faker\Generator as Faker;
 
 $factory->define(NotificationType::class, function (Faker $faker) {
     return [
-        'description' => $faker->sentence($nbWords = 6, $variableNbWords = true)
+        'description' => $faker->randomElement([
+        						'Alert',
+        						'Error',
+        						'Info'
+        					],$count=1)
         
     ];
 });

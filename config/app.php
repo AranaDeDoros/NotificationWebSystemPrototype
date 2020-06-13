@@ -177,6 +177,8 @@ return [
 
         /* Notification System Providers....*/
         App\Providers\RepositoriesServiceProvider::class,
+        App\Providers\StorageServiceProvider::class,
+        App\Providers\EmailSendingServiceProvider::class,
 
     ],
 

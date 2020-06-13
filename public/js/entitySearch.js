@@ -12,7 +12,9 @@ tagify = new Tagify( input, {
 /*onchange event to assign its current value
  to the input that will be sent to the server*/
 input.addEventListener('change', (e)=>{
-
+        console.log('enter');
+        this.value = document.querySelector('div#suggestions:first-child')[0]
+                    .textContent;
 });
 
 //button to remove all entered users
