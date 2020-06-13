@@ -7,10 +7,25 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailWithAttachments extends Mailable {
+class EmailWithAttachments extends Mailable implements ShouldQueue{
 
     use Queueable,
         SerializesModels;
+
+
+    /**
+     * The number of times the job may be attempted.
+     *
+     * @var int
+     */
+    public $tries = 25;
+
+    /**
+     * The maximum number of exceptions to allow before failing.
+     *
+     * @var int
+     */
+    public $maxExceptions = 3;
 
     /**
      * Build an e-mail with attachements.
@@ -34,15 +49,7 @@ class EmailWithAttachments extends Mailable {
         $this->bAttachedFiles = $aAttachedFiles;
     }
 
-
-
-
 /*
-<body>
-    Here is an image:
-
-    <img src="{{ $message->embed($pathToImage) }}">
-</body>
 
         Mail::to($sDestinatario)->
         send(new CorreoConAdjuntos(
@@ -52,11 +59,10 @@ class EmailWithAttachments extends Mailable {
 Exception ex
 
 
-QUEUE
-
 foreach (['taylor@example.com', 'dries@example.com'] as $recipient) {
     Mail::to($recipient)->send(new OrderShipped($order));
 }
+
 Mail::to($request->user())
     ->cc($moreUsers)
     ->bcc($evenMoreUsers)
