@@ -25,5 +25,7 @@ interface UserRepositoryInterface{
 	public function update($keys);
 
 	public function delete($userId);
-	
+
+	public function syncRelationshipData($data, $user);
+		
 }

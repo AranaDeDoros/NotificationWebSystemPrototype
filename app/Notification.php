@@ -15,7 +15,7 @@ class Notification extends Model
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'groups'
+        'created_at', 'updated_at', 'deleted_at'
     ];
 
 	protected function format(){

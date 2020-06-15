@@ -60,5 +60,5 @@ Route::middleware('throttle:20,1')->group(function(){
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::fallback(function () {
-	return 'nobody here but us chickens!';
+	return '<h1 style="text-align:center; font-size:300px">¯\_(ツ)_/¯</h1>';
 });

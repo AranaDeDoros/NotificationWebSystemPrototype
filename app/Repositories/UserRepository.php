@@ -101,6 +101,12 @@ class UserRepository implements UserRepositoryInterface{
 		return $this->setStatusToInactive($userId);
 	}
 
+	public function syncRelationshipData($data, $user){
+
+		$user->groups->syncWithoutDetaching($data);
+		
+	}
+
 
 
 	

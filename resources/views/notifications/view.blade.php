@@ -4,7 +4,7 @@
 @section('title', 'Notifications')
 
 <x-return-button routeName="notifications.all"/>
-
+{{$notification->schedules}}
 <div class="container">
 	<fieldset class="form-group">
 		<legend> EDIT NOTIFICATION </legend>
@@ -16,14 +16,15 @@
 						<label for="notifTypes form-text ">Type</label>
 				  		<select id="notifTypes" class="form-control" name="cmbNotifTypes"
 				  		required>
-				             <option value="{{$notification->notificationType}}">{{$notification->notificationType}}</option>}
+				             <option value="{{$notification->notificationType->id}}">
+				             	{{$notification->notificationType->description}}</option>}
 						</select>			
 					</div>
 					<div class="col">
 						<label for="groupAdd form-text ">Group</label>
 				  		<select id="groupAdd" class="form-control" name="cmbGroups"
 				  		required>
-				             <option value="{{$notification->groupId}}">{{$notification->groupId}}</option>}
+				             <option value="{{$notification->groups[0]->id}}">{{$notification->groups[0]->groupName}}</option>}
 						</select>		
 					</div>
 				</div>
@@ -32,7 +33,7 @@
 						<label for="scheduleTypes form-text ">Schedule</label>
 				  		<select id="scheduleTypes" class="form-control" name="cmbSchedules"
 				  		required>
-				             <option value="{{$notification->scheduleType}}">{{$notification->scheduleType}}</option>
+				             <option value="{{$notification->schedule->id}}">{{$notification->schedule->description}}</option>
 						</select>			
 					</div>
 					<div class="col">
@@ -68,7 +69,7 @@
 					  </button>
 		            </div>
 	            </div>
-				AGREGAR CAMPO PARA INFO ADICIONAL?
+				
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group form-text ">

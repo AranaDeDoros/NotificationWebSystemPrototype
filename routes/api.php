@@ -17,3 +17,28 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/groupTypes', function(Request $request){
+	return \App\GroupType::all(); 
+});
+
+Route::get('schedules', function(Request $request){
+	return \App\Schedule::all(); 
+});
+
+Route::get('/notif', function(Request $request){
+	return \App\Notification::all(); 
+});
+
+Route::get('/groups', function(Request $request){
+	return \App\Group::all(); 
+});
+
+Route::get('/users', function(Request $request){
+	return \App\User::all(); 
+});
+
+Route::get('/notifTypes', function(Request $request){
+	return \App\NotificationType::all(); 
+});

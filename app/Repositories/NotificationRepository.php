@@ -111,6 +111,13 @@ class NotificationRepository implements NotificationRepositoryInterface{
 		return $this->setStatusToInactive($notificationId);
 	}
 
+	public function syncRelationshipData($data, $notification){
+
+		$notification->groups->syncWithoutDetaching($data);
+		
+	}
+
+
 	
 	
 }

@@ -20,8 +20,8 @@
           <div class="col">
             <label for="groupTypeAdd" class="form-text ">Group Type</label>
               <select id="groupTypeAdd" class="form-control" name="cmbGroupType"
-              required>
-                     <option value="{{$group->groupType}}">{{$group->groupTypes->description}}</option>
+              required disabled>
+                     <option value="{{$group->groupType->id}}">{{$group->groupType->description}}</option>
               </select>   
           </div>
           <div class="col">

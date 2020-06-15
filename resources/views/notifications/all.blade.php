@@ -14,8 +14,8 @@
 					<div class="col">
 						<label for="notifTypes form-text ">Type</label>
 				  		<select id="notifTypes" class="form-control" name="cmbNotifTypes"
-				  		required>
-				             <option value="1">tipo</option>}
+				  		required disabled>
+				             
 						</select>			
 					</div>
 					<div class="col">
@@ -29,7 +29,7 @@
 						<label for="scheduleTypes form-text ">Schedule</label>
 				  		<select id="scheduleTypes" class="form-control" name="cmbSchedules"
 				  		required>
-				             <option value="3">tipo</option>}
+				             
 						</select>			
 					</div>
 				</div>
@@ -53,7 +53,7 @@
 				      </button>
 		            </div>
 	            </div>
-				AGREGAR CAMPO PARA INFO ADICIONAL?
+				
 				<div class="row">
 					<div class="col-12">
 						<div class="form-group form-text ">
@@ -145,5 +145,6 @@
 @include('layouts/summernote')
 
 <script src="{{asset('js/entitySearch.js')}}"></script>
+<script src="{{asset('js/retrieveNotifData.js')}}"></script>
 
 @endsection

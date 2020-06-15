@@ -97,5 +97,12 @@ class GroupRepository implements GroupRepositoryInterface{
 		return $this->setStatusToInactive($groupId);
 	}
 
+	public function syncRelationshipData($data, $group){
+
+		$group->users->syncWithoutDetaching($data);
+		$group->notification->syncWithoutDetaching($data);
+		
+	}
+
 	
 }

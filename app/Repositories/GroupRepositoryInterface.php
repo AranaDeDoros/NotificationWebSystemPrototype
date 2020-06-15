@@ -23,5 +23,7 @@ interface GroupRepositoryInterface{
 	public function update($keys);
 
 	public function delete($groupId);
+
+	public function syncRelationshipData($data, $group);
 	
 }

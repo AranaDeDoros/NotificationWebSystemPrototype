@@ -20,7 +20,6 @@
               <label for="groupTypeAdd form-text ">Group Type</label>
                 <select id="groupTypeAdd" class="form-control" name="cmbGroupType"
                 required>
-                       <option value="1">val1</option>}
               </select>   
             </div>
           </div>
@@ -97,5 +96,6 @@
 </div>
 
 <script src="{{asset('js/entitySearch.js')}}"></script>
+<script src="{{asset('js/retrieveTypes.js')}}"></script>
 
 @endsection

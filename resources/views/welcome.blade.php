@@ -3,7 +3,32 @@
 @section('content')
 
 
+<select class="form-control" name="groupTypeAdd" id="groupTypeAdd">
+    
+</select>
 
+<script>
+    
+    axios.get('api/schedules').then((res)=>{
+        const retrievedData = res.data;
+        let select = document.getElementById('groupTypeAdd');
+        let option = "";
+        let dataLength = retrievedData.length;
+        console.log(dataLength);
+        for (let i = 0; i < dataLength; i++) {
+            option = `<option value="${retrievedData[i].id}">${retrievedData[i].description}</value>`;
+            select.insertAdjacentHTML('beforeend', option);            
+        }
+    })
+        .catch((e)=>{
+            alert(e);
+        });
+
+
+
+</script>
+
+<!-- 
 <div class="autocomplete-suggestion"></div>
 
 <form class="form" onsubmit="return false"  method="get" >
@@ -140,5 +165,5 @@ new autoComplete({
  }
 
 </script>
-
+ -->
 @endsection
