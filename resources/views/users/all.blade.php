@@ -7,7 +7,7 @@
 
 <div class="container">
 	<fieldset class="form-group">
-		<legend> CREATE A NEW USER </legend>
+		<legend> ADD A NEW USER </legend>
 			<form method="POST" action="{{route('users.new')}}">
 					@csrf
 					<div class="row">
@@ -42,9 +42,11 @@
 		             </div>
 		            <div class="col-2 text-center">
 		              <br>
-		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
-		              Deselect all groups</button>
-		              <button id="btnNewUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
+		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="button">
+		              	<i class="fi-xwpuxl-check"></i> Unselect all
+		          	  </button>
+		              <button id="btnNewUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">
+		              	<i class="fi-cwluxl-plus-wide"></i> Add
 				      </button>
 		            </div>
 		        </div>					
@@ -84,7 +86,9 @@
 	      	{{$user->email}}
 	      </td>
 	      <td>
-	      	KEY HACIA GRUPOS
+	      	@foreach($user->groups as $group)
+				{{$group->groupName}} , 
+	      	@endforeach
 	      </td>
 	      <td>
 	       <form action="{{route('users.delete', ['id'=>$user->id])}}" method="post" accept-charset="utf-8">

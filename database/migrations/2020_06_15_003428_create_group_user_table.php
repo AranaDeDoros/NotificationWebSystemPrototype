@@ -1,11 +1,10 @@
 <?php
 
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotificationTypesTable extends Migration
+class CreateGroupUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,10 @@ class CreateNotificationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notification_types', function (Blueprint $table) {
+        Schema::create('group_user', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->default('');
-            $table->text('description')->default('');
-            $table->string('emailTemplate')->default('');
+            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateNotificationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notification_types');
+        Schema::dropIfExists('group_user');
     }
 }

@@ -17,8 +17,8 @@ class Schedule extends Model
     ];
     
     
-    
-    public function notifications(){
-    	return $this->hasMany(Notification::class, 'scheduleType');
+    //one to one
+    public function notification(){
+    	return $this->hasOne(Notification::class, 'scheduleTypeId');
     }
 }

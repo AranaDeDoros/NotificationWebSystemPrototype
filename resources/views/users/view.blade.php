@@ -57,10 +57,11 @@
 		           </div>
 		          <div class="col-2 text-center">
 		              <br>
-		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
-		              Deselect all groups</button>
-		            <button id="btnUpdateUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Update
-				    </button>
+		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="button">
+		              <i class="fi-xwpuxl-check"></i> Unselect all</button>
+			          <button id="btnUpdateUser" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">
+			            	<i class="fi-xwsuxl-update"></i> Update
+					  </button>
 		            <br>
 		        </div>
 
@@ -72,7 +73,7 @@
                     @csrf
                     @method('DELETE')
                     <button type="submit" id="btnDeleteUser"
-                    class="btn btn-md btn-round btn-primary"> Delete </button>
+                    class="btn btn-md btn-round btn-primary"><i class="fi-xnsuxl-trash-bin"></i> Delete </button>
                      <span class="ml-2"><strong>This action cannot be reverted.</strong> </span>
                  </form>
 

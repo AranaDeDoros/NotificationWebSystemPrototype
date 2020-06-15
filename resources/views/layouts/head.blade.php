@@ -27,6 +27,8 @@
         <script src="{{asset('js/tagify.js')}}"></script>      
         <script>let basePath = '{{url('/')}}' ;</script>
 
+        <script defer src="https://friconix.com/cdn/friconix.js"> </script> 
+
       {{--
         @stack('summernoteAssets')
         @stack('autocompleteAssets')

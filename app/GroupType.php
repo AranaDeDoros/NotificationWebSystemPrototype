@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupType extends Model
 {
-    public function groups(){
-    	return $this->hasMany(Group::class, 'groupType');
+	//one to one
+    public function group(){
+    	return $this->hasOne(Group::class, 'groupTypeId');
     }
 }

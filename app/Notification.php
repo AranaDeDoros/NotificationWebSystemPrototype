@@ -22,18 +22,21 @@ class Notification extends Model
 
     }
 
-    public function notificationTypes(){
-    	return $this->belongsTo(NotificationType::class, 'notificationType');
+    //one to one
+    public function notificationType(){
+    	return $this->belongsTo(NotificationType::class, 'notificationTypeId');
     }
 
-    public function groups(){
-    	return $this->belongsTo(Group::class, 'groupId');
-    }
 
+    //one to one
     public function schedule(){
-    	return $this->belongsTo(Schedule::class, 'scheduleType');
+        return $this->belongsTo(Schedule::class, 'scheduleTypeId');
     }
     
+    //many to many
+    public function groups(){
+    	return $this->belongsToMany(Group::class);
+    }
 
 
 }

@@ -16,17 +16,17 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             
-            $table->unsignedBigInteger('notificationType');
+            $table->unsignedBigInteger('notificationTypeId');
             $table->unsignedBigInteger('groupId');
-            $table->unsignedBigInteger('scheduleType');
+            $table->unsignedBigInteger('scheduleTypeId');
             $table->tinyInteger('notificationStatus')->default(1);
             $table->tinyInteger('attachments')->default(0);
             $table->text('customMessage');
 
 
-            $table->foreign('notificationType')->references('id')->on('notification_types');
+            $table->foreign('notificationTypeId')->references('id')->on('notification_types');
             $table->foreign('groupId')->references('id')->on('groups');
-            $table->foreign('scheduleType')->references('id')->on('schedules');
+            $table->foreign('scheduleTypeId')->references('id')->on('schedules');
 
             $table->softDeletes();
 

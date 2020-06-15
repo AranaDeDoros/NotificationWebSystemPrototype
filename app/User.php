@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'groups', 'deleted_at',
+        'password', 'remember_token', 'deleted_at',
          'email_verified_at', 'created_at', 'updated_at'
     ];
 
@@ -40,14 +40,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function format(){
-
-    }
-
-    public function roles(){
+    //one role per user class, id of that class, key of parent to be used
+    public function role(){
         return $this->belongsTo(Role::class, 'roleId');
     }
 
 
-    //one for groups...
+    //many to many
+    public function groups(){
+        return $this->belongsToMany(Group::class);
+    }
+
 }

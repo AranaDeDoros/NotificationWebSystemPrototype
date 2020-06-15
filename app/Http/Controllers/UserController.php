@@ -66,9 +66,8 @@ class UserController extends Controller
     public function searchUsers(Request $request){
 
         $queryText = $request->query('q');
-        $databaseOperations = new DatabaseOperations();
         $results = User::where('name', 
-            "like",  "%".$databaseOperations->escape_like($queryText)."%")->get(); 
+            "like",  "%".DatabaseOperations::escape_like($queryText)."%")->get(); 
         return response()->json($results);
     
     }

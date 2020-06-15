@@ -19,27 +19,30 @@
                         @guest
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('notifications.all') }}">Notifications</a>
+                                <a class="nav-link" href="{{ route('notifications.all') }}">
+                                <i class="fi-xwluxl-bell-wide"></i>Notifications</a>
                             </li>   
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('groups.all') }}">
-                                Groups</a>
+                                <i class="fi-xnsuxl-team-solid"></i>Groups</a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.all') }}">
-                                Users</a>
+                                <i class="fi-xnsuxl-users-cog"></i>Users</a>
                             </li>      
 
                         @endguest
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">
+                                    <i class="fi-xnsuxl-user-solid"></i>{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                    <i class="fi-xwsuxl-sign-in-solid"></i> {{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -52,7 +55,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fi-ctldxl-sign-out-solid"></i>{{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

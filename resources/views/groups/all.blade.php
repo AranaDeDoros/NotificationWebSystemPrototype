@@ -7,7 +7,7 @@
 
 <div class="container">
   <fieldset class="form-group">
-    <legend> CREATE A NEW GROUP </legend>
+    <legend> ADD A NEW GROUP </legend>
       <form method="POST" action="{{route('groups.new')}}">
           @csrf
           <div class="row">
@@ -37,10 +37,12 @@
              </div>
             <div class="col-2">
               <br>
-              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
-              Deselect all users</button>
-              <button id="btnNewGroup" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
-                </button>
+              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="button">
+                <i class="fi-xwpuxl-check"></i> Unselect all
+              </button>
+              <button id="btnNewGroup" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">
+                <i class="fi-cwluxl-plus-wide"></i> Add
+              </button>
             </div>
           </div>
 

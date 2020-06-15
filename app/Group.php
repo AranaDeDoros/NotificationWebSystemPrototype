@@ -18,20 +18,21 @@ class Group extends Model
         'created_at', 'updated_at', 'deleted_at'
     ];
 
-    protected function format(){
 
-    }
-    
-
-    public function groupTypes(){
-    	return $this->belongsTo(GroupType::class, 'groupType');
+    //every group has one type only
+    public function groupType(){
+        return $this->belongsTo(GroupType::class, 'groupTypeId');
     }
 
 
+    //many to many
     public function notifications(){
-        return $this->hasMany(Notification::class, 'groupId');
+        return $this->belongsToMany(Notification::class, 'groupId');
     }
 
 
-    //need one for users...probably
+    //many to many
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

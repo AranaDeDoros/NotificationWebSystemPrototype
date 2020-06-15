@@ -2,7 +2,7 @@
 
 namespace App;
 
-class DatabaseOperations{
+final class DatabaseOperations{
 
 
 	/**
@@ -14,7 +14,7 @@ class DatabaseOperations{
 	 * @return string
 	 * from: https://stackoverflow.com/questions/22749182/laravel-escape-like-clause/42028380#42028380
 	 */
-	function escape_like(string $value, string $char = '\\'): string
+	public static function escape_like(string $value, string $char = '\\'): string
 	{
 	    return str_replace(
 	        [$char, '%', '_'],

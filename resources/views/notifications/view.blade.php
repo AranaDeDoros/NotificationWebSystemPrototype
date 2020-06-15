@@ -61,10 +61,11 @@
 		            </div>
 		            <div class="col-2">
 		              <br>
-		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
-		              Deselect all users</button>
-		              <button id="btnNewGroup" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
-		                </button>
+					  <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="button">
+		              	<i class="fi-xwpuxl-check"></i> Unselect all</button>
+			          <button id="btnUpdateNotif" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">
+			            <i class="fi-xwsuxl-update"></i> Update
+					  </button>
 		            </div>
 	            </div>
 				AGREGAR CAMPO PARA INFO ADICIONAL?
@@ -98,8 +99,8 @@
                  <form action="{{route('notifications.delete', ['id'=>$notification->id])}}" method="post" accept-charset="utf-8">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" id="btnDeleteUser"
-                    class="btn btn-md btn-round btn-primary"> Delete </button>
+                    <button type="submit" id="btnDeleteNotif"
+                    class="btn btn-md btn-round btn-primary"><i class="fi-xnsuxl-trash-bin"></i> Delete </button>
                      <span class="ml-2"><strong>This action cannot be reverted.</strong> </span>
                  </form>
 

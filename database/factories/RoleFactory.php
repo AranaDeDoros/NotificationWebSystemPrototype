@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 use App\Permission;
 $factory->define(Role::class, function (Faker $faker) {
     return [
-        'description' => $faker->realText(),
+        'description' => $faker->randomElement(['Admin', 'Regular']),
         'permissionId' => Permission::all()->random()->id
     ];
 });

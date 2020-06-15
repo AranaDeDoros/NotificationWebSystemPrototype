@@ -10,7 +10,7 @@ $factory->define(Group::class, function (Faker $faker) {
     return [
     	'groupName' => $faker->name(),
     	'status' => $faker->boolean($chanceOfGettingTrue = 50),
-    	'groupType' => GroupType::all()->random()->id
+    	'groupTypeId' => GroupType::all()->random()->id
           
     ];
 });

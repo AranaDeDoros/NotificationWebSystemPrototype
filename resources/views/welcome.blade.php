@@ -12,7 +12,7 @@
 
     <div class="container">
         <div class="row">
-                <button class="btn btn-primary btn-sm btn-round " id="btnTagsDes" type="primary">X</button>
+                <button class="btn btn-primary btn-sm btn-round " id="btnTagsDes" type="button">X</button>
                 <input name="tags" placeholder="add somebody" class="form-control" value="">
         </div>
     </div>

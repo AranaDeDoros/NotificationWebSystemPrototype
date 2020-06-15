@@ -67,9 +67,8 @@ class GroupController extends Controller
     public function searchGroups(Request $request){
         
         $queryText = $request->query('q');
-        $databaseOperations = new DatabaseOperations();
         $results = Group::where('groupName', 
-            "like",  "%".$databaseOperations->escape_like($queryText)."%")->get(); 
+            "like",  "%".DatabaseOperations::escape_like($queryText)."%")->get(); 
         return response()->json($results);
 
     }

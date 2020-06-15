@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class NotificationType extends Model
 {
-    public function notifications(){
-    	return $this->hasMany(Notification::class, 'notificationType');
+    //one to one
+    public function notification(){
+    	return $this->hasOne(Notification::class, 'notificationTypeId');
     }
 }

@@ -7,7 +7,7 @@
 
 <div class="container">
 	<fieldset class="form-group">
-		<legend> CREATE A NEW NOTIFICATION </legend>
+		<legend> ADD A NEW NOTIFICATION </legend>
 		<form method="POST" action="{{route('notifications.new')}}" enctype="multipart/form-data">
 				@csrf
 				<div class="row">
@@ -45,10 +45,12 @@
 		            </div>
 		            <div class="col-2">
 		              <br>
-		              <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="primary">
-		              Deselect all users</button>
-		              <button id="btnNewGroup" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">Create
-		                </button>
+					  <button class="btn btn-primary btn-md btn-round mb-2 " id="btnTagsDes" type="button">
+		              	<i class="fi-xwpuxl-check"></i> Unselect all
+		          	  </button>
+		              <button id="btnNewNotif" type="submit" class="btn btn-primary btn-block pb-2 pr-3 pl-3 ">
+		              	<i class="fi-cwluxl-plus-wide"></i> Add
+				      </button>
 		            </div>
 	            </div>
 				AGREGAR CAMPO PARA INFO ADICIONAL?
@@ -87,7 +89,7 @@
   	<thead class="thead-dark">
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Tipo</th>
+      <th scope="col">Type</th>
       <th scope="col">Description</th>
       <th scope="col">Destinataries</th>
       <th scope="col">Status</th>
@@ -100,16 +102,20 @@
      <tr>
       <th scope="row">{{$notification->id}}</th>
       <td>
-      	{{$notification->notificationType}}
+		
+		{{$notification->notificationType->description}}
+      	
       </td>
       <td>
       	<a href="{{route('notifications.view', $notification->id)}}" 
       	id="notification-ID" title="View Notification">
-      	DESCRIPCION
+      	{{$notification->notificationType->description}}
       	</a>
       </td>
       <td>
-      	{{$notification->notificationType}}
+      		@foreach($notification->groups as $group)
+      			{{$group->groupName}}
+      		@endforeach
       </td>
       
       <td class="statusLabel">
