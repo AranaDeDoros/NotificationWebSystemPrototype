@@ -11,7 +11,7 @@ use App\NotificationType;
 $factory->define(Notification::class, function (Faker $faker) {
     return [
         'notificationTypeId'=> NotificationType::all()->random()->id,
-        'groupId'=> Group::all()->random()->id,
+        //'groupId'=> Group::all()->random()->id,
         'notificationStatus'=> $faker->boolean(),
         'scheduleTypeId'=> Schedule::all()->random()->id,
         'attachments'=>$faker->boolean(),

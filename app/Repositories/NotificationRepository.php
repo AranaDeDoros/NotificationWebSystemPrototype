@@ -65,15 +65,15 @@ class NotificationRepository implements NotificationRepositoryInterface{
 			return false;
 		}*/
 
-		
 		$newNotification = New Notification();
-		$newNotification->notificationType = $keys['cmbNotifTypes'];
-		$newNotification->groupId = $keys['cmbGroups'];
-		$newNotification->scheduleType = $keys['cmbSchedules'];
+		$newNotification->notificationTypeId = $keys['cmbNotifTypes'];
+		//$newNotification->groupId = $keys['cmbGroups'];
+		$newNotification->scheduleTypeId = $keys['cmbSchedules'];
 		$newNotification->attachments = 0;
-		$newNotification->customMessage = $keys['txtMsg'];
+		$newNotification->customMessage = 'test'; //$keys['txtMsg'];
 		$newNotification->notificationStatus = 1;
-		return $newNotification->save();
+		$newNotification->save();
+		$this->syncGroupRelationshipData($keys['tags'], $newNotification->id);
 
 	}
 
@@ -88,13 +88,14 @@ class NotificationRepository implements NotificationRepositoryInterface{
 		}*/
 
 		
-		$notification->notificationType = $keys['cmbNotifTypes'];
-		$notification->groupId = $keys['cmbGroups'];
-		$notification->scheduleType = $keys['cmbSchedules'];
+		$notification->notificationTypeId = $keys['cmbNotifTypes'];
+		//$notification->groupId = $keys['cmbGroups'];
+		$notification->scheduleTypeId = $keys['cmbSchedules'];
 		$notification->attachments = 0;
-		$newNotification->customMessage = $keys['txtMsg'];
+		$notification->customMessage = 'test';//$keys['txtMsg'];
 		$notification->notificationStatus =  $keys['cmbStatus'];
 		$notification->save();
+		$this->syncGroupRelationshipData($keys['tags'], $notification->id);
 
 
 		if($notification->notificationStatus < 1){
@@ -111,9 +112,11 @@ class NotificationRepository implements NotificationRepositoryInterface{
 		return $this->setStatusToInactive($notificationId);
 	}
 
-	public function syncRelationshipData($data, $notification){
+	public function syncGroupRelationshipData($groupIds, $notificationId){
 
-		$notification->groups->syncWithoutDetaching($data);
+		$notification = $this->findById($notificationId);
+		$groupIdsToBeAttached =  str_replace("uId", "", explode(",",$groupIds));
+		$notification->groups()->syncWithoutDetaching($groupIdsToBeAttached);
 		
 	}
 

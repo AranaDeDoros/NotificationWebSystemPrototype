@@ -5,7 +5,7 @@
 				codeviewIframeFilter: true,
 				placeholder: "text to be appended to the e-mail",
 				disableDragAndDrop: true,
-				pasteHTML : "{{$notification->customMessage}}",
+				code : "{{$notification->customMessage}}",
 				toolbar: [
 				  ['style', ['style']],
 				  ['font', ['bold', 'underline', 'clear']],

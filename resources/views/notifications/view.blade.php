@@ -24,7 +24,10 @@
 						<label for="groupAdd form-text ">Group</label>
 				  		<select id="groupAdd" class="form-control" name="cmbGroups"
 				  		required>
-				             <option value="{{$notification->groups[0]->id}}">{{$notification->groups[0]->groupName}}</option>}
+				             @foreach($notification->groups as $group)
+								<option value="{{$group->id}}">{{$group->groupName}}</option>}
+				             @endforeach
+				             
 						</select>		
 					</div>
 				</div>
@@ -75,7 +78,7 @@
 						<div class="form-group form-text ">
 		                 <label for="txtMessage">Extra Info</label>
 		                 <textarea class="form-control" id="txtMessage" name="txtMsg"
-		                  rows="3" value="{{$notification->customMessage}}" required></textarea>
+		                  rows="3" value="{{$notification->customMessage}}"></textarea>
 	  					</div>
 					</div>
 				</div>

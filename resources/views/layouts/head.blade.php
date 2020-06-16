@@ -24,7 +24,8 @@
         <link href="{{ asset('css/tagify.css') }}" rel="stylesheet">
         <script src="{{asset('js/auto-complete.min.js')}}"></script>
         <link rel="stylesheet" href="{{asset('css/auto-complete.css')}}">
-        <script src="{{asset('js/tagify.js')}}"></script>      
+        <script src="{{asset('js/tagify.js')}}"></script>    
+        {{-- <link rel="stylesheet" href="{{asset('css/hint.min.css')}}">   --}}
         <script>let basePath = '{{url('/')}}' ;</script>
 
         <script defer src="https://friconix.com/cdn/friconix.js"> </script> 

@@ -64,10 +64,13 @@ class UserRepository implements UserRepositoryInterface{
 		$newUser->name = $keys['txtUsername'];
 		$newUser->email = $keys['txtEmail'];
 		$newUser->password = '12345789';
-		$newUser->groups = 'ADADAS';
-		$newUser->roleId = 1;
+		$newUser->roleId = 1; // 1 for admin 2 for guest
 		$newUser->status = 1;
-		return $newUser->save();
+		$newUser->save();
+
+		//now we sync
+		$this->syncRelationshipData($keys['tags'], $newUser->id);
+		return true;
 
 	}
 
@@ -85,6 +88,7 @@ class UserRepository implements UserRepositoryInterface{
 		$user->email = $keys['txtEmail'];
 		$user->status =  $keys['cmbStatus'];
 		$user->save();
+		$this->syncRelationshipData($keys['tags'], $user->id);
 
 
 		if($user->status < 1){
@@ -101,9 +105,12 @@ class UserRepository implements UserRepositoryInterface{
 		return $this->setStatusToInactive($userId);
 	}
 
-	public function syncRelationshipData($data, $user){
+	public function syncRelationshipData($groupIds, $userId){
 
-		$user->groups->syncWithoutDetaching($data);
+		$user = $this->findById($userId);
+		$groupIdsToBeAttached =  str_replace("uId", "", explode(",",$groupIds));
+		var_dump($groupIdsToBeAttached);	
+		$user->groups()->syncWithoutDetaching($groupIdsToBeAttached);
 		
 	}
 

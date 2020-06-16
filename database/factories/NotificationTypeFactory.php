@@ -15,7 +15,12 @@ $factory->define(NotificationType::class, function (Faker $faker) {
         						'Alert',
         						'Error',
         						'Info'
-        					],$count=1)
+        					],$count=1),
+        'emailTemplate' => $faker->randomElement([
+                                'mail.alert',
+                                'mail.error',
+                                'mail.info'
+                            ],$count=1)
         
     ];
 });

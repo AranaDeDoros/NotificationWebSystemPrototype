@@ -14,17 +14,17 @@
 					<div class="col">
 						<label for="notifTypes form-text ">Type</label>
 				  		<select id="notifTypes" class="form-control" name="cmbNotifTypes"
-				  		required disabled>
+				  		required readonly>
 				             
 						</select>			
 					</div>
-					<div class="col">
-						<label for="groupAdd form-text ">Group</label>
+<!-- 					<div class="col">
+	<label for="groupAdd form-text ">Group</label>
 				  		<select id="groupAdd" class="form-control" name="cmbGroups"
 				  		required>
 				             <option value="2">tipo</option>}
-						</select>		
-					</div>
+	</select>		
+</div> -->
 					<div class="col">
 						<label for="scheduleTypes form-text ">Schedule</label>
 				  		<select id="scheduleTypes" class="form-control" name="cmbSchedules"
@@ -58,7 +58,7 @@
 					<div class="col-12">
 						<div class="form-group form-text ">
 			                 <label for="txtMessage">Extra Info</label>
-			                 <textarea class="form-control" id="txtMessage"  name="txtMsg" rows="3" required></textarea>
+			                 <textarea class="form-control" id="txtMessage"  name="txtMsg" rows="3" ></textarea>
 	  					</div>
 					</div>
 				</div>
@@ -69,9 +69,6 @@
 					   		 <label for="inptAttachment form-text ">Attachment</label>
 					    	<input type="file" class="form-control-file" name="inptAttachment">
 						</div>
-					    <div class="col-4">
-					     	<button id="btnNewNotif" type="submit" class="btn btn-primary pb-2 pr-3 pl-3 mb-5">Create</button>
-					   	</div>
 				   </div>
 				</div>	
 

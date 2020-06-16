@@ -59,9 +59,13 @@ class GroupRepository implements GroupRepositoryInterface{
 		
 		$newGroup = New Group();
 		$newGroup->groupName = $keys['txtGroupName'];
-		$newGroup->groupType = $keys['cmbGroupType'];
+		$newGroup->groupTypeId = $keys['cmbGroupType'];
 		$newGroup->status = 1;
-		return $newGroup->save();
+		$newGroup->save();
+
+		//now we sync
+		$this->syncUserRelationshipData($keys['tags'], $newGroup->id);
+		return true;
 
 	}
 
@@ -77,10 +81,10 @@ class GroupRepository implements GroupRepositoryInterface{
 		}
 
 		$group->groupName = $keys['txtGroupName'];
-		$group->groupType = $keys['cmbGroupType'];
-		$group->status =  $keys['cmbStatus'];
+		$group->groupTypeId = $keys['cmbGroupType'];
+		$group->status =    $keys['cmbStatus'];
 		$group->save();
-
+		$this->syncUserRelationshipData($keys['tags'], $group->id);
 
 		if($group->status < 1){
 			return 0;
@@ -97,10 +101,18 @@ class GroupRepository implements GroupRepositoryInterface{
 		return $this->setStatusToInactive($groupId);
 	}
 
-	public function syncRelationshipData($data, $group){
+	public function syncUserRelationshipData($userIds, $groupId){
 
-		$group->users->syncWithoutDetaching($data);
-		$group->notification->syncWithoutDetaching($data);
+		$group = $this->findById($groupId);
+		$userIdsToBeAttached =  str_replace("uId", "", explode(",",$userIds));
+		$group->users()->syncWithoutDetaching($userIdsToBeAttached);
+		
+	}
+	public function syncNotificationRelationshipData($notificationIds, $groupId){
+
+		$group = $this->findById($groupId);
+		$notificationIdsToBeAttached =  str_replace("uId", "", explode(",",$userIds));
+		$group->users()->syncWithoutDetaching($notificationIdsToBeAttached);
 		
 	}
 

@@ -24,6 +24,8 @@ interface GroupRepositoryInterface{
 
 	public function delete($groupId);
 
-	public function syncRelationshipData($data, $group);
+	public function syncUserRelationshipData($userIds, $groupId);
+
+	public function syncNotificationRelationshipData($notificationIds, $groupId);
 	
 }

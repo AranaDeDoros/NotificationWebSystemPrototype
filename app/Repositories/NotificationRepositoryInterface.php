@@ -28,7 +28,7 @@ interface NotificationRepositoryInterface{
 
 	public function delete($notificationId);
 
-	public function syncRelationshipData($data, $notification);
+	public function syncGroupRelationshipData($groupIds, $notificationId);
 
 	
 }

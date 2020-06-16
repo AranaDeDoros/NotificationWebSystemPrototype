@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             //$table->string('userGroups')->default('');
-            $table->unsignedBigInteger('roleId');
+            $table->unsignedBigInteger('roleId')->default(1);
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();

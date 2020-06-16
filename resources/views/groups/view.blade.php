@@ -19,10 +19,12 @@
           </div>
           <div class="col">
             <label for="groupTypeAdd" class="form-text ">Group Type</label>
-              <select id="groupTypeAdd" class="form-control" name="cmbGroupType"
+              <input type="text" id="groupTypeAdd" class="form-control" name="cmbGroupType"
+              required readonly value="{{$group->groupType->description}}">
+              {{--<select id="groupTypeAdd" class="form-control" name="cmbGroupType"
               required disabled>
                      <option value="{{$group->groupType->id}}">{{$group->groupType->description}}</option>
-              </select>   
+              </select> --}}
           </div>
           <div class="col">
             <label for="txtStatus" class="form-text">Status</label>

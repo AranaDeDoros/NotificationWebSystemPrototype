@@ -17,7 +17,7 @@ class CreateNotificationsTable extends Migration
             $table->id();
             
             $table->unsignedBigInteger('notificationTypeId');
-            $table->unsignedBigInteger('groupId');
+            //$table->unsignedBigInteger('groupId');
             $table->unsignedBigInteger('scheduleTypeId');
             $table->tinyInteger('notificationStatus')->default(1);
             $table->tinyInteger('attachments')->default(0);
@@ -25,7 +25,7 @@ class CreateNotificationsTable extends Migration
 
 
             $table->foreign('notificationTypeId')->references('id')->on('notification_types');
-            $table->foreign('groupId')->references('id')->on('groups');
+            //$table->foreign('groupId')->references('id')->on('groups');
             $table->foreign('scheduleTypeId')->references('id')->on('schedules');
 
             $table->softDeletes();

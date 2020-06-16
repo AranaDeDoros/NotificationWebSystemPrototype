@@ -21,13 +21,13 @@
 					  		<input type="email" id="emailAddress" class="form-control" name="txtEmail"
 					  		required/>
 						</div>
-						<div class="col">
-							<label for="userAdd form-text ">Group</label>
+<!-- 						<div class="col">
+	<label for="userAdd form-text ">Group</label>
 					  		<select id="userAdd" class="form-control" name="cmbGroups"
 					  		required multiple>
 					             <option value="1">tipo</option>
-							</select>		
-						</div>
+	</select>		
+</div> -->
 					</div>
  
 		        <div class="row mt-2">

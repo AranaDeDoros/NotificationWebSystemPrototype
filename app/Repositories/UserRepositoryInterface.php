@@ -26,6 +26,6 @@ interface UserRepositoryInterface{
 
 	public function delete($userId);
 
-	public function syncRelationshipData($data, $user);
+	public function syncRelationshipData($groupIds, $userId);
 		
 }

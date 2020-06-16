@@ -17,13 +17,13 @@
 				  		<input type="text" id="userName" class="form-control" name="txtUsername"
 				  		required value="{{$user->name}}">
 					</div>
-					<div class="col">
-						<label for="groupAdd form-text ">Group</label>
+<!-- 					<div class="col">
+	<label for="groupAdd form-text ">Group</label>
 				  		<select id="groupAdd" class="form-control" name="cmbGroups"
 				  		required multiple>
 				             <option value="1" selected="">111</option>
-						</select>		
-					</div>
+	</select>		
+</div> -->
 					<div class="col">
 						<label for="txtEmail form-text ">E-mail</label>
 				  		<input type="email" id="emailAddress" class="form-control" name="txtEmail"
