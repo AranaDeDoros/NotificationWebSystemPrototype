@@ -63,7 +63,7 @@ class UserRepository implements UserRepositoryInterface{
 		$newUser = New User();
 		$newUser->name = $keys['txtUsername'];
 		$newUser->email = $keys['txtEmail'];
-		$newUser->password = '12345789';
+		$newUser->password = ucfirst($keys['txtUsername']).',.-';
 		$newUser->roleId = 1; // 1 for admin 2 for guest
 		$newUser->status = 1;
 		$newUser->save();
