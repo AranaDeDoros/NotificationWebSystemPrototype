@@ -93,6 +93,7 @@
 
   </tbody>
 </table>
+  {{ $groups->links() }}
 </div>
 
 <script src="{{asset('js/entitySearch.js')}}"></script>

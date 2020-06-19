@@ -7,7 +7,7 @@ class GroupRepository implements GroupRepositoryInterface{
 
 	public function all(){
 
-		return Group::orderBy('groupName')->where('status', 1)->get();
+		return Group::orderBy('groupName')->where('status', 1)->paginate(10);
 		//orderby where with get ->map()->format();
 		
 	}

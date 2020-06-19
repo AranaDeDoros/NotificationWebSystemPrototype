@@ -103,7 +103,9 @@
 
 	  </tbody>	
 	</table>
+	{{ $users->links() }}
 </div>
+
 
 <script src="{{asset('js/entitySearch.js')}}"></script>
 

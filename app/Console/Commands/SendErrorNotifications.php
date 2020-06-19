@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Mail\EmailManager;
+use App\Mail\EmailWithAttachments;
 
 class SendErrorNotifications extends Command
 {
@@ -37,6 +39,14 @@ class SendErrorNotifications extends Command
      */
     public function handle()
     {
-        //
+        
+        $emailAddresses = EmailManager::getUserEmailAddressesRAW(2);
+
+        foreach ($emailAddresses as $emailAddress) {
+            
+            Mail::to(new EmailWithAttachments($aData, $sSubject, $sView, $aAttachedFiles));    
+
+        }
+
     }
 }

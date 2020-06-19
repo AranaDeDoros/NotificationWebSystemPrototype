@@ -7,15 +7,15 @@ use Faker\Generator as Faker;
 
 $factory->define(NotificationType::class, function (Faker $faker) {
     return [
-    	'type' 		  => $faker->randomElement([
-    							'A network error',
-    							'A generic alert'
-    						]),
-        'description' => $faker->randomElement([
+        'type' => $faker->randomElement([
         						'Alert',
         						'Error',
         						'Info'
         					],$count=1),
+    	'description'   => $faker->randomElement([
+    							'A network error',
+    							'A generic alert'
+    						]),
         'emailTemplate' => $faker->randomElement([
                                 'mail.alert',
                                 'mail.error',

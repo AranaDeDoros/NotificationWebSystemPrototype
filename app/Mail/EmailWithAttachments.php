@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -18,7 +18,7 @@ class EmailWithAttachments extends Mailable implements ShouldQueue{
      *
      * @var int
      */
-    public $tries = 25;
+    public $tries = 5;
 
     /**
      * The maximum number of exceptions to allow before failing.
@@ -40,13 +40,13 @@ class EmailWithAttachments extends Mailable implements ShouldQueue{
     public $bAttachedFiles;
 
 
-    public function __construct(/*$aData, $sSubject, $sView, $aAttachedFiles*/) {
+    public function __construct($aData, $sSubject, $sView, $aAttachedFiles) {
         $this->aData = $aData;
         $this->sSubject = $sSubject;
         $this->sView = $sView;
         $this->aAttachedFiles = $aAttachedFiles;
-        $this->sCC = $sCC;
-        $this->bAttachedFiles = $aAttachedFiles;
+        //$this->sCC = $sCC;
+        //$this->bAttachedFiles = $aAttachedFiles;
     }
 
 /*
@@ -92,7 +92,7 @@ Route::get('mailable', function () {
                 ->subject($this->sSubject)
                 //->cc($this->sCC)
                 ->view($this->sView)
-                //->with($this->aData)
+                ->with($this->aData)
                 ->delay(5);
 
         if($this->bAttachedFiles){

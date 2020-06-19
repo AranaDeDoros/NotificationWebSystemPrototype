@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('algo', function(){
+
+return \DB::select(DB::raw('select * from failed_jobs'));
+return \App\Mail\EmailManager::getUserEmailAddressesRAW(1);
+
+});
+
 Route::get('/', function () {
     return view('test');
 })->name('index');

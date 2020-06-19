@@ -137,6 +137,7 @@
 
   </tbody>
 </table>
+	{{ $notifications->links() }}
 </div>
 
 @include('layouts/summernote')

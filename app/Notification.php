@@ -35,7 +35,7 @@ class Notification extends Model
     
     //many to many
     public function groups(){
-    	return $this->belongsToMany(Group::class);
+    	return $this->belongsToMany(Group::class)->withTimestamps();
     }
 
 

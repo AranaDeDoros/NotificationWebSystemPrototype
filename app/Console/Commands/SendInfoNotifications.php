@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Mail\EmailManager;
+use App\Mail\EmailWithAttachments;
+use Mail;
 
 class SendInfoNotifications extends Command
 {
@@ -37,6 +40,17 @@ class SendInfoNotifications extends Command
      */
     public function handle()
     {
-        //
+
+        $users = EmailManager::getUserEmailAddressesRAW(1);
+
+        foreach ($users as $user) {
+            Mail::to($user->email)->send(
+                new EmailWithAttachments(
+                    ['username' => $user->name],
+                    $user->name, 
+                    'emails.info', 
+                    false));    
+        }
+
     }
 }

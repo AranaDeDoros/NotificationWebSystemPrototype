@@ -48,3 +48,13 @@ nav{
 	padding-left: 10px;
 }
 
+
+.page-item.active .page-link {
+    background-color: #395d73;
+    border-color: #385d73;
+}
+
+.page-link{
+	font-weight: 600;
+	font-size: 1em;
+}

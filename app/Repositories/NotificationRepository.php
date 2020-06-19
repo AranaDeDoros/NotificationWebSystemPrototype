@@ -7,7 +7,7 @@ class NotificationRepository implements NotificationRepositoryInterface{
 
 	public function all(){
 
-		return Notification::orderBy('created_at', 'desc')->where('notificationStatus', 1)->get();
+		return Notification::orderBy('created_at', 'desc')->where('notificationStatus', 1)->paginate(10);
 		
 	}
 

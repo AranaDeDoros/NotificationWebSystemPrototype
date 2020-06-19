@@ -7,7 +7,7 @@ class UserRepository implements UserRepositoryInterface{
 
 	public function all(){
 
-		return User::orderBy('name')->where('status', 1)->get();
+		return User::orderBy('name')->where('status', 1)->paginate(20);
 		
 	}
 
