@@ -40,12 +40,15 @@ class SendErrorNotifications extends Command
     public function handle()
     {
         
-        $emailAddresses = EmailManager::getUserEmailAddressesRAW(2);
+        $users = EmailManager::getUserEmailAddressesRAW(2);
 
-        foreach ($emailAddresses as $emailAddress) {
-            
-            Mail::to(new EmailWithAttachments($aData, $sSubject, $sView, $aAttachedFiles));    
-
+        foreach ($users as $user) {
+            Mail::to($user->email)->send(
+                new EmailWithAttachments(
+                    ['username' => $user->name],
+                    $user->name, 
+                    'emails.error', 
+                    false));    
         }
 
     }

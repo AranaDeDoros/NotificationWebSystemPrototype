@@ -42,15 +42,12 @@
 		@break
 
 		@case('dErr')
+		@default
 		  <div class="container">
 		    <div class="alert alert-danger" role="alert">
 		     Something wrong happened.
 		    </div>
 		 </div>
-		@break
-
-		@default
-			
 		@break
 
 	@endswitch

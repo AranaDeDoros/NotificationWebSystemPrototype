@@ -41,7 +41,7 @@ class SendInfoNotifications extends Command
     public function handle()
     {
 
-        $users = EmailManager::getUserEmailAddressesRAW(1);
+        $users = EmailManager::getUserEmailAddressesRAW(3);
 
         foreach ($users as $user) {
             Mail::to($user->email)->send(
