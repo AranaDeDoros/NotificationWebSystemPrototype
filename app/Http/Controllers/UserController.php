@@ -12,6 +12,9 @@ class UserController extends Controller
 
     private $userRepository;
     private $databaseOperations;
+    const USERNAME_IN_USE = -1;
+    const USER_UPDATED = 1;
+    const USER_INACTIVE = 0;
 
     public function __construct(UserRepositoryInterface $userRepository){
         $this->userRepository = $userRepository;
@@ -47,11 +50,11 @@ class UserController extends Controller
         $keys = $request->all();
         $userResponse = $this->userRepository->update($keys);
 
-        if($userResponse == 0){
+        if($userResponse == self::USER_INACTIVE){
             return redirect('users/all');
         }
         
-        if ($userResponse == -1) {
+        if ($userResponse == self::USERNAME_IN_USE) {
             return back()->with('sOperation', 'uErr');
         }
 
