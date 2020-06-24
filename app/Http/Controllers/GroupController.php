@@ -12,6 +12,9 @@ class GroupController extends Controller
 
     private $groupRepository;
     private $databaseOperations;
+    const GROUPNAME_IN_USE = -1;
+    const GROUP_UPDATED = 1;
+    const GROUP_INACTIVE = 0;
 
     public function __construct(GroupRepositoryInterface $groupRepository){
         $this->groupRepository = $groupRepository;
@@ -47,11 +50,11 @@ class GroupController extends Controller
         $keys = $request->all();
         $groupResponse = $this->groupRepository->update($keys);
 
-        if($groupResponse == 0){
+        if($groupResponse == self::GROUP_INACTIVE){
             return redirect('groups/all');
         }
         
-        if ($groupResponse == -1) {
+        if ($groupResponse == self::GROUPNAME_IN_USE) {
             return back()->with('sOperation', 'uErr');
         }
 

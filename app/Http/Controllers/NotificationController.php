@@ -10,6 +10,7 @@ class NotificationController extends Controller
 {
 
     private $notificationRepository;
+    const NOTIFICATION_INACTIVE = 0;
 
     public function __construct(NotificationRepositoryInterface $notificationRepository){
         $this->notificationRepository = $notificationRepository;
@@ -45,7 +46,7 @@ class NotificationController extends Controller
         $keys = $request->all();
         $notificationRespo = $this->notificationRepository->update($keys);
 
-        if($notificationRespo == 0){
+        if($notificationRespo == self::NOTIFICATION_INACTIVE){
             return redirect('notifications/all');
         }
         

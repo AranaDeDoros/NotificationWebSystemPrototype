@@ -16,6 +16,7 @@
 		     {{$field}} already in use.
 		    </div>
 		 </div>
+		 @break
 		 
 		 @case('uSuc')
 		  <div class="container">
