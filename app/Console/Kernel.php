@@ -25,9 +25,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //$schedule->command('inspire')->hourly();
-        /*$schedule->command('notifications:alert');
-        $schedule->command('notifications:error');
-        $schedule->command('notifications:info');*/
+        $schedule->command('notifications:alert')->daily();
+        $schedule->command('notifications:error')->daily();
+        $schedule->command('notifications:info')->daily();
     }
 
     /**
