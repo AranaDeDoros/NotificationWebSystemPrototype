@@ -179,6 +179,7 @@ return [
         App\Providers\RepositoriesServiceProvider::class,
         App\Providers\StorageServiceProvider::class,
         App\Providers\EmailSendingServiceProvider::class,
+        //Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class
 
     ],
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Utilities\NotificationLogger;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('algo', function(){
-
+	//$level, $eventType, $inputMessage, $registeredBy, $channel = self::CHANNEL
+	$level = 'alert'; $event = 1; $msg = "dsds"; $by = 'me';
+	dump($level, $event, $msg, $by);
+	//$log = new NotificationLogger();
+return \Log::channel('notificationsys')->emergency($msg);
+//$log->writeToLog($level, $event, $msg, $by);
 return \DB::select(DB::raw('select * from failed_jobs'));
 return \App\Mail\EmailManager::getUserEmailAddressesRAW(1);
 
@@ -25,6 +30,14 @@ Route::get('/', function () {
 })->name('index');
 
 Auth::routes();
+
+
+/*Route::middleware('auth')->group(function(){
+	Route::group(['prefix' => 'admin'], function(){
+		Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('admin.logs');
+	});
+});*/
+
 
 Route::middleware('throttle:20,1')->group(function () {
 Route::group(['prefix' => 'groups'], function () {

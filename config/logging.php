@@ -35,6 +35,11 @@ return [
     */
 
     'channels' => [
+        'notificationsys' => [
+            'diver' => 'daily',
+            'path'  => storage_path('logs/notificationsyst.log'),
+            'level' => 'debug',
+        ],
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],

@@ -40,7 +40,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //one role per user class, id of that class, key of parent to be used
+    //one role per user class
     public function role(){
         return $this->belongsTo(Role::class, 'roleId');
     }
