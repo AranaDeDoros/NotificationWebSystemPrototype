@@ -1,7 +1,5 @@
-
-@section('type', {{$type}} )
-@endsection
+@extends('emails.generic')
 
 @section('message')
-<p class="lead">ERROR: {{$reason}}</p>
+<p class="lead">ERROR: {{$customMessage}}</p>
 @endsection

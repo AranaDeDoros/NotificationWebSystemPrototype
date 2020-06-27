@@ -46,7 +46,8 @@ class SendInfoNotifications extends Command
         foreach ($users as $user) {
             Mail::to($user->email)->send(
                 new EmailWithAttachments(
-                    ['username' => $user->name],
+                    ['username' => $user->name,
+                     'customMessage' => $user->customMessage],
                     $user->name, 
                     'emails.info', 
                     false));    

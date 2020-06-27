@@ -23,7 +23,7 @@ final class EmailManager{
 
 		$notificationType = self::determineType($type);
 		return DB::select(DB::raw(
-					'select n.id as notifc, g.id, g.groupName, u.name, u.email 
+					'select n.id as notifc, g.id, g.groupName, u.name, u.email, n.customMessage
 					from notifications n, groups g, users u, 
 					group_notification, group_user 
 					where group_notification.group_id = g.id 

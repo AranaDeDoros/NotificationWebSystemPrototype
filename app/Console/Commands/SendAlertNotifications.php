@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Mail\EmailManager;
 use App\Mail\EmailWithAttachments;
+use Mail;
 
 class SendAlertNotifications extends Command
 {
@@ -45,7 +46,8 @@ class SendAlertNotifications extends Command
         foreach ($users as $user) {
             Mail::to($user->email)->send(
                 new EmailWithAttachments(
-                    ['username' => $user->name],
+                    ['username' => $user->name,
+                     'customMessage' => $user->customMessage],
                     $user->name, 
                     'emails.alert', 
                     false));    

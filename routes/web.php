@@ -14,13 +14,13 @@ use App\Utilities\NotificationLogger;
 */
 
 Route::get('algo', function(){
-	$level = 'alert'; $event = 1; $msg = "dsds"; $by = 'me';
-	dump($level, $event, $msg, $by);
-	$log = new NotificationLogger('notificationsys');
-return //\Log::emergency($msg);
-$log->writeToLog($level, $event, $msg, $by);
-return \DB::select(DB::raw('select * from failed_jobs'));
-return \App\Mail\EmailManager::getUserEmailAddressesRAW(1);
+	//$level = 'alert'; $event = 1; $msg = "dsds"; $by = 'me';
+	//dump($level, $event, $msg, $by);
+//	$log = new NotificationLogger('notificationsys');
+//return //\Log::emergency($msg);
+//$log->writeToLog($level, $event, $msg, $by);
+//return \DB::select(DB::raw('select * from failed_jobs'));
+return \App\Mail\EmailManager::getUserEmailAddressesRAW(2);
 
 });
 
