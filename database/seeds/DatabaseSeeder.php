@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
        factory(User::class, 20)->create()->
        each(function($user){
-            $user->groups()->syncWithoutDetaching(User::all()->random()->id);
+            $user->groups()->syncWithoutDetaching(Group::all()->random()->id);
         });
 
        factory(Notification::class, 20)->create()->
