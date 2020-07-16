@@ -27,3 +27,4 @@ A barebones Email Notification WebSystem using Laravel 7. Allows you to manage u
 ## TODO
 1. Actually do the tests.
 2. Implement roles and permissions.
+3. Fix UI bugs.
